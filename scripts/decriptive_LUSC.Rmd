@@ -1,0 +1,1482 @@
+---
+title: "Analysis of TCGA Lung Squamous Cell Carcinoma (LUSC)"
+author: "Estefania Mancini"
+date: "May 2020"
+output:
+  html_document:
+    code_folding: hide
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 6
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries, message=FALSE, warning=FALSE, results='hide'}
+library(ggplot2)
+library(survival)
+library(knitr)
+library(kableExtra)
+library(survminer)
+library(ggfortify)
+library(psichomics)
+library(xtable)
+```
+
+# Introduction
+The Cancer Genome Atlas (TCGA, https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga), molecularly characterized over 20,000 primary cancer and matched normal samples spanning 33 cancer types. 
+
+# Data
+* Raw data is available under folder <"data">
+
+* Serrano’s group shared with us the tables of the splicing events for LUNG cancer produced using (https://github.com/vastgroup/vast-tools). We extratcted PSI for NUMB EXON 9 (HsaEX0044216) as well as coversion tables for samples and clinical data (see <"../data/psi_lung_NA_NewN3.tab"/)
+
+* Clinical data was obtained using psichomics (see https://www.bioconductor.org/packages/release/bioc/html/psichomics.html). See <../data/luad_clinical_psichomics.tab>.
+
+* nrow=503 (samples)
+* ncol=2169 (features)
+* adin.disease_code=LUSC
+
+
+```{r clinical, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+clinical<-read.table( "../data/lusc_clinical_psichomics.tab", sep="\t", header = T, row.names = 1)
+cancertype="LUSC"
+#kable(clinical[1:3, 1:5], caption = "CLinical data")
+gender<-grep("patient.gender", 
+             colnames(clinical))
+vitalStatus<-grep("patient.vital_status", 
+                  colnames(clinical))
+sample_type<-grep("patient.samples.sample.2.sample_type", colnames(clinical))
+age<-grep("patient.age_at_initial_pathologic_diagnosis",colnames(clinical))
+# mutations 
+muts<-grep("mutation", colnames(clinical) )
+colnames(clinical)[muts]
+EGFR<-grep("EGFR",colnames(clinical),ignore.case = TRUE)
+KRAS<-grep("KRAS",colnames(clinical),ignore.case = TRUE)
+alk<-grep("alk", colnames(clinical),ignore.case = TRUE)
+#Check info for translocation as well:
+trans<-grep("translocation", colnames(clinical)); 
+colnames(clinical)[trans]
+# Ientify columns for tumor description:
+stage<-grep("patient.stage_event.pathologic_stage_tumor_stage", colnames(clinical))
+colnames(clinical)[stage]
+neoplasm_cancer_status<-grep("patient.person_neoplasm_cancer_status", colnames(clinical))
+colnames(clinical)[neoplasm_cancer_status]
+
+# Define the columns for analysis of survival:
+follow_up.vital_status<-grep("patient.follow_ups.follow_up.vital_status", colnames(clinical))
+days_to_death<-grep("patient.days_to_death", colnames(clinical))
+days_last_follow<-grep("patient.days_to_last_followup", colnames(clinical))
+days_last_known_alive<-grep("patient.days_to_last_known_alive", colnames(clinical))
+fup2<-grep(
+  "patient.follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment",
+  colnames(clinical))
+fup3<-  grep(
+  "patient.follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment",
+           colnames(clinical))
+fup4<-grep(
+  "patient.follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment",
+    colnames(clinical))
+newTumourI<-grep(
+  "patient.follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment", 
+  colnames(clinical))
+newTumourE<-grep(
+  "patient.new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment",
+  colnames(clinical))
+
+canonical_status<-grep("patient.bcr_canonical_check.bcr_patient_canonical_status", colnames(clinical))
+treatment_success<-grep("patient.follow_ups.follow_up.followup_treatment_success", colnames(clinical))
+therapy_outcome_success<-grep("patient.follow_ups.follow_up.primary_therapy_outcome_success", colnames(clinical))
+primary_therapy_outcome_success<-grep("patient.primary_therapy_outcome_success", colnames(clinical))
+smoker<-grep("patient.number_pack_years_smoked", colnames(clinical)) 
+#We made a small datframe for Recurrence Free Survival (RFS):
+RFS<-data.frame(clinical$patient.days_to_death, 
+                clinical$patient.days_to_last_followup, 
+                clinical$patient.days_to_last_known_alive,
+                clinical$patient.follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)
+rownames(RFS)<-rownames(clinical)
+
+#Make a small dataframe with our selected columns:
+subset<-clinical[,unique(c(gender,
+                  vitalStatus,
+                  sample_type,
+                  age,
+                  muts,
+                  EGFR,#2
+                  KRAS,
+                  alk,
+                  trans,
+                  stage,
+                  neoplasm_cancer_status,
+                  follow_up.vital_status,
+                  days_to_death,
+                  days_last_follow,
+                  days_last_known_alive,
+                  fup2,
+                  fup3,
+                  fup4,
+                  newTumourI,
+                  newTumourE,
+                  canonical_status,
+                  treatment_success,
+                  therapy_outcome_success,
+                  primary_therapy_outcome_success,
+                  smoker))]
+# Clean a bit column names:
+colnames(subset)<-sub("patient.", "", colnames(subset))
+subset$stage_event.pathologic_stage_tumor_stage<-sub("stage ","",
+subset$stage_event.pathologic_stage_tumor_stage);
+#Prepare a new column: *Aggregate stage*, where we classify stages as *early* (i, ia, ib, ii, iia, iib) o *late* (iii,iiia,iiib,iv)
+subset$aggStage <- subset$stage
+subset$aggStage[subset$aggStage=="i"]<-"early"
+subset$aggStage[subset$aggStage=="ia"]<-"early"
+subset$aggStage[subset$aggStage=="ib"]<-"early"
+subset$aggStage[subset$aggStage=="ii"]<-"early"
+subset$aggStage[subset$aggStage=="iia"]<-"early"
+subset$aggStage[subset$aggStage=="iib"]<-"early"
+subset$aggStage[subset$aggStage=="iii"]<-"late"
+subset$aggStage[subset$aggStage=="iiia"]<-"late"
+subset$aggStage[subset$aggStage=="iiib"]<-"late"
+subset$aggStage[subset$aggStage=="iv"]<-"late"
+```
+
+```{r newVar, echo = TRUE,message=TRUE, warning=TRUE}
+subset$newVar<-paste(subset$stage,
+                     subset$gender, sep="_")
+
+dfAg1<-data.frame(table(subset$newVar))
+#Var1 viene del table
+dfAg1<-cbind(dfAg1,   
+             data.frame(matrix(unlist(strsplit(as.character(dfAg1$Var1), "_")), ncol=2, byrow = T)))
+
+colnames(dfAg1)[1]<-"comb"
+colnames(dfAg1)[2]<-"NumOfSamples"
+colnames(dfAg1)[3]<-"stage"
+colnames(dfAg1)[4]<-"gender"
+
+knitr::kable(dfAg1[,2:4], format="pandoc", align='cccc')
+
+ggplot(data=dfAg1, aes(x=stage, y=NumOfSamples, fill=gender)) +
+  geom_bar(stat="identity",  position="dodge")+
+  theme_minimal()
+
+subset$newVar2<-paste(subset$aggStage,
+                      subset$gender, 
+                      sep="_")
+dfAg2<-data.frame(table(subset$newVar2))
+#Var1 viene del table
+dfAg2<-cbind(dfAg2,   
+             data.frame(matrix(unlist(strsplit(as.character(dfAg2$Var1), "_")), ncol=2, byrow = T)))
+
+colnames(dfAg2)[1]<-"comb"
+colnames(dfAg2)[2]<-"NumOfSamples"
+colnames(dfAg2)[3]<-"aggStage"
+colnames(dfAg2)[4]<-"gender"
+
+knitr::kable(dfAg2, format="pandoc", align='cccc')
+
+ggplot(data=dfAg2, aes(x=aggStage, y=NumOfSamples, fill=gender)) +
+  geom_bar(stat="identity",  position="dodge")+
+  theme_minimal()
+```
+
+
+# Descriptive 
+
+Here we analyze PSI distribution using several clinical variables
+
+## Statistical tests
+We use:
+  
+* Wilcoxon test	wilcox.test()	Compare two groups (non-parametric)
+
+* Kruskal-Wallis	kruskal.test()	Compare multiple groups (non-parametric)
+
+See <http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/76-add-p-values-and-significance-levels-to-ggplots/>
+  
+```{r psiVal, echo = FALSE, message=FALSE, warning=FALSE}
+psiVal<-read.table("../data/psi_lung_NA_NewN3.tab", 
+                   header = T, 
+                   stringsAsFactors = F, 
+                   row.names = 1)
+#kable(psiVal[, 1:10], caption = "PSI data")
+#
+sIds<-colnames(psiVal)[7:ncol(psiVal)]
+sIdsB<-gsub('\\.', '-',as.character(sIds))
+sIdsB<-gsub('^X', '',as.character(sIdsB))
+colnames(psiVal)<-gsub('\\.', '-',as.character(colnames(psiVal)))
+colnames(psiVal)<-gsub('^X', '',as.character(colnames(psiVal)))
+```
+
+
+```{r convTable, echo = FALSE, message=FALSE, warning=FALSE}
+## Load conversion tables, for sample ID, case:
+pt<-read.table("../data/lung_pt.files.txt", header = T, sep="\t")
+#kable(pt[1:5,], caption = "Conversion data")
+convTablePT<-data.frame(case=pt$cases.0.submitter_id, file=pt$file_id)
+convTablePT$origin<-rep("pt", nrow(convTablePT))
+stn<-read.table("../data/lung_stn.files.txt", header = T, sep="\t")
+convTableSTN<-data.frame(case=stn$cases.0.submitter_id, file=stn$file_id)
+convTableSTN$origin<-rep("stn", nrow(convTableSTN))
+ConvTotal<-rbind(convTablePT, convTableSTN)
+psiNormali<-match(convTableSTN$file, colnames(psiVal))
+psiN<-as.numeric(t(psiVal[, psiNormali]))
+notna<-which(is.na(psiN))
+psiNormal<-as.numeric(psiN[-notna])
+g0Max<-max(psiNormal)
+g0Mean<-mean(psiNormal)
+dfNormal<-data.frame(psiNormal, rep("normal",length(psiNormal)))
+colnames(dfNormal)<-c("psi", "type")
+#Match samples PT:
+ii<-match(sIdsB, ConvTotal$file)
+pp<-match(rownames(subset), ConvTotal$case)
+ppi<-pp[!is.na(pp)]
+ppo<-which(!is.na(pp))
+finalDF<-cbind(subset[ppo,], ConvTotal[ppi,])
+finalDF<-finalDF[finalDF$origin!="stn",]
+#Agregamos el PSI
+vv<-match(finalDF$file, colnames(psiVal))
+values<-psiVal[,vv]
+values[values=="NAold"]<-NA
+values[values=="NAnew3"]<-NA
+finalV<-as.numeric(t(values ))
+names(finalV)<-colnames(values)
+#Armo este DF solo para plotear Tumor vs Normal:
+dfCancer<-data.frame(finalV, rep("tumor", length(finalV) )) 
+colnames(dfCancer)<-c("psi", "type")
+dfNormal<-data.frame(psiNormal, 
+                     rep("normal",length(psiNormal)))
+colnames(dfNormal)<-c("psi", "type")
+dfPlots<-rbind(dfCancer, dfNormal)
+isna<-which(is.na(dfPlots$psi))
+dfPlots<-dfPlots[-isna,]
+dfPlots$color<-as.character(dfPlots$type)
+dfPlots$color[dfPlots$color=="tumor"]<-"tomato"
+dfPlots$color[dfPlots$color=="normal"]<-"skyblue"
+dfPlots$color<-as.factor(dfPlots$color)
+```
+
+## Analysis by type: normal or tumoral tissue (samples)
+
+For the first analysis we compared the levels of NUMB exon 9 inclusion between healthy and tumoral tissue.
+In total 109 healthy samples (mean PSI 6.14) vs  494 tumoral samples (mean PSI 35) were compared using a Wilcoxon test.
+
+This data suggests that lung tumors have a (significant) higher NUMB exon 9 PSI value than healthy tissue (p-value < 2.2e-16).
+
+
+```{r violinB, echo = TRUE,message=TRUE, warning=TRUE}
+normal<-dfPlots[dfPlots$type=="normal",]
+print(paste("N normal:",dim(normal)[1]))
+print(paste("Mean normal:",mean(normal$psi)))
+tumor<-dfPlots[dfPlots$type=="tumor",]
+print(paste("N tumoral:",dim(tumor) [1]))
+print(paste("Mean tumoral:",mean(tumor$psi)))
+wilcox.test(normal$psi, tumor$psi)
+```
+
+```{r violinC, echo = TRUE,message=FALSE, warning=FALSE}
+numb_psi<-dfPlots[,1:2]
+colnames(numb_psi) <- c("PSI","type")
+ggplot(data= numb_psi, aes(x=type,y=PSI)) + geom_violin(aes(fill=type)) +
+  scale_colour_manual(values = c("skyblue", "tomato")) +  
+  scale_fill_manual(values = c("skyblue", "tomato")) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.05),
+              size=.5, 
+              color=  "black")+
+  geom_boxplot(width=0.1) +
+  stat_summary(fun=median, geom="point", size=1, color="red")+   stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()
+```
+
+### GTEX (caterina)
+We also analyzed PSI value in healthy tissues, using The Genotype-Tissue Expression (GTEx) project data (https://www.gtexportal.org/home/)
+
+* Vast-tool hg19,PSI range: 0-100
+* median PSI values across lung samples = 3.52%
+* mean PSI values across lung samples= 3.52%
+* Range PSI values across lung samples= 20%
+
+This data suggest PSI in healthy tissues is ~3.5 %
+
+## Analysis by stage
+
+We analyzed PSI values according to their tumoral stage (provided in the clinical data) using a kruskal.test(). We didn't find any significant differences between them according kruskal test (pval = 0.24)
+
+```{r stage, echo = FALSE, message=FALSE, warning=FALSE}
+df<-data.frame(sample=names(finalV),psi=as.numeric(finalV))
+cc<-match(df$sample, finalDF$file)
+finalV<-data.frame(df, finalDF[cc,])
+finalV<-finalV[-which(is.na(finalV$psi)),]
+finalV$status<-rep(1,  nrow(finalV))
+isna<-which(is.na(finalV$stage))
+finalVNotNA<-finalV[-isna,]
+print(table(finalVNotNA$stage))
+finalVNotNA$stage<-as.factor(finalVNotNA$stage)
+kruskal.test(psi ~ stage, data = finalVNotNA)
+```
+
+```{r stageP, echo = FALSE, message=FALSE, warning=FALSE}
+ggplot(finalVNotNA, aes(x=stage, y=psi, fill=stage))+ 
+  geom_violin()   + 
+  geom_jitter(shape=16, 
+              position=position_jitter(0.05),
+              size=.5, 
+              color=  "black")+
+  geom_boxplot(width=0.1) +
+  stat_summary(fun=median, geom="point", size=1, color="red")+   stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()
+```
+
+* (Now, re plot ordering by median, to improve visualization):
+
+```{r stagePorder, echo = FALSE, message=FALSE, warning=FALSE}
+finalVNotNA$stage = with(finalVNotNA, reorder(stage, psi, median))
+
+ggplot(finalVNotNA, aes(x=stage, y=psi, fill=stage))+ 
+  geom_violin()   + 
+  geom_jitter(shape=16, 
+              position=position_jitter(0.05),
+              size=.5, 
+              color=  "black")+
+  geom_boxplot(width=0.1) +
+  stat_summary(fun=median, geom="point", size=1, color="red")+   stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()
+```
+
+* **Results**: According Kruskal-Wallis ( p-value = 0.25) there is no clear stage with (high) different psi. 
+
+## Analysis by Aggregate stage
+In order to have bigger groups, we aggregated the tumors in two main stages.
+ Early (n=400, stage I to IIIB) and Late (n=90, stage III and IV). We compared NUMB exon 9 PSI in these groups.
+
+* **Results**: despite Late stage seems to has higher PSI, there is not a significant difference according to Wilcoxon test p-value = 0.1856)
+
+```{r aggStageWilcoxon, echo = FALSE, message=FALSE, warning=FALSE}
+print(table(finalVNotNA$aggStage))
+wilcox.test(finalVNotNA$psi[finalVNotNA$aggStage=="early"],
+            finalVNotNA$psi[finalVNotNA$aggStage=="late"])
+```
+
+
+```{r aggStage, echo = FALSE, message=FALSE, warning=FALSE}
+ggplot(finalVNotNA, aes(x=aggStage, y=psi, fill=aggStage))+ 
+  geom_violin()   + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.05),
+              size=.5, 
+              color=  "black")+
+  geom_boxplot(width=0.1) +
+  stat_summary(fun=median, geom="point", size=1, color="red")+   stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()
+```
+
+
+## Analysis by gender
+ 
+We compared NUMB exon 9 PSI in Male (n=363 vs Female n=128) and also in Early and Late tumors. 
+
+* **Results**
+We didnt find signtificant difference in PSI between male and female samples ( p-value = 0.8514)
+
+```{r genderwilcoxon, echo = FALSE, message=FALSE, warning=FALSE}
+table(finalVNotNA$gender)
+wilcox.test(finalVNotNA$psi[finalVNotNA$gender=="male"],
+            finalVNotNA$psi[finalVNotNA$gender=="female"])
+```
+
+
+```{r gender, echo = FALSE, message=FALSE, warning=FALSE}
+ggplot(finalVNotNA, aes(x=gender, y=psi, fill=gender))+ 
+  geom_boxplot(width=0.1) +
+  geom_violin()   + 
+  geom_jitter(shape=16, 
+              position=position_jitter(0.05),
+              size=.5, 
+              color=  "black")+
+  stat_summary(fun=median, geom="point", size=1, color="red")+           stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Analysis by gender and aggregate stage
+* **Results**: there is differences at both stages according KW test (early, pval=0.01, late, pval=0.037).
+But there is not significance using Wilcoxon test (early pval=0.91, late pval=0.84)
+
+```{r genderAgg3tests, echo = FALSE, message=FALSE, warning=FALSE}
+early<-finalVNotNA[finalVNotNA$aggStage=="early", ]
+print("Early by gender:")
+print(table(early$gender))
+late<-finalVNotNA[finalVNotNA$aggStage=="late", ]
+print("Late by gender:")
+print(table(late$gender))
+print("Kruskal-Wallis test:")
+kruskal.test(psi ~ gender, data = early)
+kruskal.test(psi ~ gender, data = late)
+print("Wilcoxon test:")
+wilcox.test(early$psi[early$gender=="male"],
+            early$psi[early$gender=="female"])
+wilcox.test(late$psi[late$gender=="male"],
+            late$psi[late$gender=="female"])
+```
+
+```{r genderAgg3, echo = FALSE, message=FALSE, warning=FALSE}
+ggplot(finalVNotNA, aes(x=aggStage, y=psi, fill=gender))+ 
+  #geom_violin()   + 
+  geom_boxplot(width=0.1) +
+  geom_jitter(shape=16, 
+              position=position_jitter(0.05),
+              size=.5, 
+              color=  "black")+
+  stat_summary(fun=median, geom="point", size=1, color="red")+    stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Correlation between NUMB exon 9 PSI and known LUAD driver mutations
+
+Some of the most known cancer-related mutations are also clinically measured in the patients. We performed a correlation analysis to try to identify if there is any correlation between NUMB exon 9 inclusion levels and mutations in known genes.
+
+We found reported mutations in these genes:  
+
+* We found reported mutations in these genes: 
+  + KRAS, EGFR and ALK
+* Mutations on these genes were not reported: 
+  + HER2, BRAF,DDR2,AKT,FGFR,NOTCH,TP53,CDH10,NFE2L2,KMT2C,CDKN2A,FAT1 and PI3KCA
+
+
+* ALK:	eml4 alk translocation performed: 485 no, 9 yes
++ results: 4 fish
+
+* not reported: 
+HER2, BRAF, ALK, DDR2, FGFR, NOTCH, TP53, CDH10, NFE2L2, KMT2C, CDKN2A, FAT1, PI3KCA
+
+### *egfr*
+Samples with mutation analysis performed: 
+* YES: 21,
+  + l858 1
+  + ns 19
+  + other  1
+
+* NO:  473 (NAs were replaced by "NO") 
+
+* (1 yes vs no) There is not statistically significant differences between these 2 groups (p-value = 0.2643). 
+  
+```{r egfr, echo = FALSE, message=FALSE, warning=FALSE}
+finalV$egfr_mutation_performed[is.na(finalV$egfr_mutation_performed)] <-"no"
+print(table(finalV$egfr_mutation_performed))
+kruskal.test(finalV$psi ~ finalV$egfr_mutation_performed)
+
+finalV$egfr_mutation_result<-as.character(finalV$egfr_mutation_result)
+finalV$egfr_mutation_result[is.na(finalV$egfr_mutation_result)]<-"ns"
+
+finalV$egfr_mutation_performed[is.na(finalV$egfr_mutation_performed)]<-"no"
+finalV$egfr_mutation_result<-as.character(finalV$egfr_mutation_result)
+finalV$egfr_mutation_result[is.na(finalV$egfr_mutation_result)]<-"ns"
+finalV$egfr_mutation_performed = with(finalV, reorder(egfr_mutation_performed, psi, median))
+finalVE<-finalV[finalV$egfr_mutation_performed=="yes",]
+
+############yes or not
+print(table(finalVE$egfr_mutation_result))
+kruskal.test(finalVE$psi ~ finalVE$egfr_mutation_result)
+```
+
+* (2 yes) There is not statistically significant differences  (p-value = 0.6113). 
+```{r egfrp0, echo = TRUE, message=FALSE, warning=FALSE}
+ggplot(finalV, aes(x=egfr_mutation_performed, y=psi, fill=egfr_mutation_performed))+ 
+  geom_boxplot()   + 
+  #geom_jitter(shape=16,                position=position_jitter(0.05), size=.5,  color=  "black")+
+  stat_summary(fun=median, geom="point", size=1, color="red")+     stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+* (2, only yes) Mutation results (reorder by median PSI):  
+  
+```{r egfrpeResult, echo = TRUE, message=FALSE, warning=FALSE}
+finalVE$egfr_mutation_result = with(finalVE, reorder(egfr_mutation_result, psi, median))
+
+ggplot(finalVE, aes(x=egfr_mutation_result, y=psi, fill=egfr_mutation_result))+ 
+  geom_boxplot()   + 
+  #geom_jitter(shape=16,                position=position_jitter(0.05), size=.5,  color=  "black")+
+  stat_summary(fun=median, geom="point", size=1, color="red")+    stat_compare_means(label.y = 100, label.x=2)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+### *kras*
+* KRAS mutation performed: 493 no, 1 yes -> other
+
+### *alk*
+* **Results**: We found 9 cases where Eml4_alk_translocation was performed (4 fish)
+
+## Treatment Success
+
+We also explored the PSI in different groups according their treatment success:
+  
+### (1) Follow up: follow up treatment success
+
+* Variable name: follow_ups.follow_up.followup_treatment_success
+* **Results**: Despite we didnt find significant differences (pval 0.19), it seems PSI is slighly higher at progressive stages.
+
+```{r treatment1, echo = TRUE, message=FALSE, warning=FALSE}
+finalV$follow_ups.follow_up.followup_treatment_success<-
+  as.character(finalV$follow_ups.follow_up.followup_treatment_success)
+
+finalV$follow_ups.follow_up.followup_treatment_success[is.na(finalV$follow_ups.follow_up.followup_treatment_success)]<-"unknown"
+
+
+print(
+  table(finalV$follow_ups.follow_up.followup_treatment_success))
+##########################################################
+#remuevo los unknown
+clean<-finalV[finalV$follow_ups.follow_up.followup_treatment_success!="unknown",]
+#remuevo los partial remission response 
+clean<-clean[clean$follow_ups.follow_up.followup_treatment_success!="partial remission/response",]
+dim(clean)#234
+table(clean$follow_ups.follow_up.followup_treatment_success)
+
+clean$follow_ups.follow_up.followup_treatment_success<-
+  factor(clean$follow_ups.follow_up.followup_treatment_success,
+         c("complete remission/response",
+           "stable disease","progressive disease"))
+###########################################################
+```
+
+```{r treatment2, echo = TRUE, message=FALSE, warning=FALSE}
+ggplot(finalV, 
+       aes(x=follow_ups.follow_up.followup_treatment_success, 
+           y=psi,
+           fill=follow_ups.follow_up.followup_treatment_success))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r treatment3, echo = TRUE, message=FALSE, warning=FALSE}
+
+ggplot(clean, 
+       aes(x=follow_ups.follow_up.followup_treatment_success, 
+           y=psi,
+           fill=follow_ups.follow_up.followup_treatment_success))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+* (1b) Repito reorder by median PSI:
+  
+```{r treatment3reorder, echo = TRUE, message=FALSE, warning=FALSE}
+clean$follow_ups.follow_up.followup_treatment_success = with(clean, reorder(follow_ups.follow_up.followup_treatment_success, psi, median))
+
+ggplot(clean, 
+       aes(x=follow_ups.follow_up.followup_treatment_success, 
+           y=psi,
+           fill=follow_ups.follow_up.followup_treatment_success))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+### (2) follow_ups.follow_up.primary_therapy_outcome_success :
+  
+* Variable: follow_ups.follow_up.primary_therapy_outcome_success 
+* **Results**:  there is a significant difference according KW test (pval 0.017)
+
+```{r treatment4, echo = TRUE, message=FALSE, warning=FALSE}
+ggplot(finalV, 
+       aes(x=follow_ups.follow_up.primary_therapy_outcome_success, 
+           y=psi,
+           fill=follow_ups.follow_up.primary_therapy_outcome_success))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r treatment5, echo = TRUE, message=FALSE, warning=FALSE}
+table(clean$follow_ups.follow_up.primary_therapy_outcome_success)
+#remuevo los unknown
+clean<-finalV[!is.na(finalV$follow_ups.follow_up.primary_therapy_outcome_success),]
+clean<-clean[clean$follow_ups.follow_up.primary_therapy_outcome_success!="partial remission/response",]
+dim(clean)#234
+table(clean$follow_ups.follow_up.primary_therapy_outcome_success)
+
+ggplot(clean, 
+       aes(x=follow_ups.follow_up.primary_therapy_outcome_success, 
+           y=psi,
+           fill=follow_ups.follow_up.primary_therapy_outcome_success))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+* (2b) Repito clean and reorder:
+  + **Results** There is a clear difference, high PSI at more progressive stages (KW test, pval 0.0062)
+
+
+```{r treatment5reorder, echo = TRUE, message=FALSE, warning=FALSE}
+clean$follow_ups.follow_up.primary_therapy_outcome_success = with(clean, reorder(follow_ups.follow_up.primary_therapy_outcome_success, psi, median))
+table(clean$follow_ups.follow_up.primary_therapy_outcome_success)
+ggplot(clean, 
+       aes(x=follow_ups.follow_up.primary_therapy_outcome_success, 
+           y=psi,
+           fill=follow_ups.follow_up.primary_therapy_outcome_success))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+### Primary therapy outcome success
+* variable: primary_therapy_outcome_success
+* **Results**: It seems that PSI values correlates with the progression of the disease, but we didnt find significant differences
++  complete remission/response
++  stable disease 
++  progressive disease 
+
+
+```{r treatment6, echo = TRUE, message=FALSE, warning=FALSE}
+finalV$primary_therapy_outcome_success<-as.character(finalV$primary_therapy_outcome_success)
+
+finalV$primary_therapy_outcome_success[is.na(finalV$primary_therapy_outcome_success)]<-"unknown"
+table(finalV$primary_therapy_outcome_success)
+ggplot(finalV, 
+       aes(x=primary_therapy_outcome_success, 
+           y=psi,
+           fill=primary_therapy_outcome_success))+ 
+  geom_violin()   + 
+  theme_bw()  +
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+```{r treatment6Clean, echo = TRUE, message=FALSE, warning=FALSE}
+finalV$primary_therapy_outcome_success<-as.character(finalV$primary_therapy_outcome_success)
+
+finalV$primary_therapy_outcome_success[is.na(finalV$primary_therapy_outcome_success)]<-"unknown"
+table(finalV$primary_therapy_outcome_success)
+clean<-finalV[finalV$primary_therapy_outcome_success!="unknown",]
+clean<-clean[clean$primary_therapy_outcome_success!="partial remission/response",]
+clean<-clean[!is.na(clean$primary_therapy_outcome_success),]
+table(clean$primary_therapy_outcome_success)
+ggplot(clean, 
+       aes(x=primary_therapy_outcome_success, 
+           y=psi,
+           fill=primary_therapy_outcome_success))+ 
+  geom_violin()   + 
+  theme_bw()  +
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+* (3b) repito order
+
+```{r treatment6CleanOrder, echo = TRUE, message=FALSE, warning=FALSE}
+table(clean$primary_therapy_outcome_success)
+
+clean$primary_therapy_outcome_success = with(clean, reorder(primary_therapy_outcome_success, psi, median))
+
+ggplot(clean, 
+       aes(x=primary_therapy_outcome_success, 
+           y=psi,
+           fill=primary_therapy_outcome_success))+ 
+  geom_violin()   + 
+  theme_bw()  +
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Neoplasm cancer status
+We want to check if there were any difference according tumor types. There is not significant difference (WT, pval 0.9)
+
+```{r treatment7, echo = TRUE, message=FALSE, warning=FALSE}
+finalV$person_neoplasm_cancer_status<-as.character(finalV$person_neoplasm_cancer_status)
+finalV$person_neoplasm_cancer_status[is.na(finalV$person_neoplasm_cancer_status)]<-"unknown"
+print("Before cleaning")
+table(finalV$person_neoplasm_cancer_status)
+#remvove unknown
+finalVNotUnknown<-finalV[finalV$person_neoplasm_cancer_status!="unknown",]
+finalVNotUnknown<-finalVNotUnknown[!is.na(finalV$person_neoplasm_cancer_status),]
+finalVNotUnknown<-finalVNotUnknown[finalVNotUnknown$person_neoplasm_cancer_status!="NA",]
+print("After cleaning")
+table(finalVNotUnknown$person_neoplasm_cancer_status)
+ggplot(finalVNotUnknown, 
+       aes(x=person_neoplasm_cancer_status, 
+           y=psi,
+           fill=person_neoplasm_cancer_status ))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Sample types
+
+```{r treatment8, echo = TRUE, message=FALSE, warning=FALSE}
+finalV$samples.sample.2.sample_type<-as.character(finalV$samples.sample.2.sample_type)
+finalV$samples.sample.2.sample_type[is.na(finalV$samples.sample.2.sample_type)]<-"unknown"
+table(finalV$samples.sample.2.sample_type)
+
+#order:
+finalV$samples.sample.2.sample_type = with(finalV, reorder(samples.sample.2.sample_type, psi, median))
+
+ggplot(finalV, 
+       aes(x=samples.sample.2.sample_type, y=psi, fill=samples.sample.2.sample_type))+ 
+  geom_violin()   + 
+  theme_bw()+
+  geom_jitter(shape=16, 
+              position=position_jitter(0.2),
+              size=.5, color="darkgrey")     + 
+  stat_summary(fun=median, geom="point", size=1, color="red")  + 
+  stat_compare_means(label.y = 100, label.x=2)+
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Smokers
+Explore if there is any relationship between PSI and Smoke. There are  417 patients which reported: "number pack years smoked"
+
+```{r smoker, echo = TRUE, message=FALSE, warning=FALSE}
+smoking<-finalV[!is.na(finalV$number_pack_years_smoked),]
+dim(smoking)
+plot(smoking$psi, smoking$number_pack_years_smoked)
+cor(smoking$psi, smoking$number_pack_years_smoked)
+lm(smoking$psi ~ smoking$number_pack_years_smoked)
+```
+
+
+# Survival Plots
+
+To study the impact of alternative splicing events on prognosis, Kaplan-Meier curves may be plotted for groups of patients separated by a given PSI cutoff for a given alternative splicing event. The optimal PSI cutoff maximises the significance of group differences in survival analysis (i.e. minimises the p-value of the log-rank tests of difference in survival between individuals whose samples have a PSI below and above that threshold). 
+
+## (1st strategy)  **optimalSurvivalCutoff**
+We estimate optimo PSI using **psichomics optimalSurvivalCutoff** function. According to this function, **PSI =  50.83** is the value that best divide patients. We then defined:
+  
+* g0: PSI < 50.83: 396 
+* g1: PSI > 50.83: 87  
+
+Total number of cases: 483
+
+```{r clinical0, echo = FALSE, message=FALSE, warning=FALSE}
+#aca computamos el optimo sin remover NAs
+clinical0<-data.frame(finalV$days_to_last_follow, 
+                      finalV$days_to_death,
+                      finalV$stage,
+                      finalV$gender)
+names(clinical0) <- c("patient.days_to_last_followup", 
+                      "patient.days_to_death",
+                      "patient.stage_event.pathologic_stage",
+                      "patient.gender")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(finalV$psi)
+opt <- optimalSurvivalCutoff(clinical0, 
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)
+# Optimal exon inclusion level 69.40
+(optimalPvalue <- opt$value)  # Respective p-value 0.00751
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinical0, censoring="right",
+                              event="days_to_death", 
+                              timeStart="days_to_death",
+                              group=label, scale="years")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+
+
+
+
+```{r makeNotNAs, message=FALSE, warning=FALSE,  echo=FALSE}
+survival<-finalV
+#OS ##########################################################
+NAs<-
+  data.frame(survival$days_to_death,
+             survival$days_to_last_followup,
+             survival$days_to_last_known_alive);
+SUMNAS<-rowSums(apply(NAs, 2,is.na) ); length(SUMNAS); survivalNotNas<-survival[SUMNAS!=3,]
+survivalNotNas$days_to_death[is.na(survivalNotNas$days_to_death)]<-0
+survivalNotNas$days_to_last_followup[is.na(survivalNotNas$days_to_last_followup)]<-0
+survivalNotNas$days_to_last_known_alive[is.na(survivalNotNas$days_to_last_known_alive)]<-0
+#
+survivalNotNas$daysOS<-
+  unlist(apply(data.frame(survivalNotNas$days_to_death,
+                          survivalNotNas$days_to_last_followup,                      survivalNotNas$days_to_last_known_alive),
+               1,max));
+#RFS #########################################################
+daysRFSDF<-
+  data.frame(
+    survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)
+###################################################
+SUMNASRFS<-rowSums(apply(daysRFSDF, 2,is.na));
+survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$daysRFS<-
+  unlist(apply(data.frame(
+    survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment),
+    1,max))
+#############################################
+df<-data.frame(survivalNotNas$daysRFS,SUMNASRFS) 
+survivalNotNas$status[survivalNotNas$days_to_death==0]<-0
+#############################################
+# Be careful here is the definition
+# days are defined as RFS days
+survivalNotNas$days<-survivalNotNas$daysRFS
+survivalNotNas$days[survivalNotNas$daysRFS==0]<-
+  survivalNotNas$daysOS[survivalNotNas$daysRFS==0]
+#########################################################
+#optimo
+survivalNotNas$group<-rep("g0", nrow(survivalNotNas))
+survivalNotNas$group[survivalNotNas$psi>50.83]<-"g1"
+#########################################################
+#here is OS
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalNotNas)
+#########################################################
+#sum(is.infinite(survivalNotNas$daysOS))#check
+##################################
+```
+
+### OS and RF Survival plots using optimo PSI (according psichomics: 50.83)
+Overall Survival (OS) 
+The event call is derived from "vital status" parameter. 
+The time_to_event is in days, equals to days_to_death if patient deceased.
+In the case of a patient is still living, the time variable is the maximum(days_to_last_known_alive, days_to_last_followup).  This pair of clinical parameters are called _EVENT and _TIME_TO_EVENT on the cancer browser. 
+
+In our case, we use these columns:
+  + days_to_death, 
+  + days_to_last_followup,
+  + days_to_last_known_alive
+
+* Recurrence Free Survival (RFS)
+The event call is derived from "new_tumor_event_after_initial_treatment" parameter. The time_to_event is in days, equals to max (days_to_new_tumor_event_after_initial_treatment, days_to_tumor_recurrence)  if there is an event. In the case of no event, the time variable is time of overall survival. The pair of clinical parameters are called _RFS and _RFS_IND on the cancer browser. 
+
+Source: <https://groups.google.com/forum/#!topic/ucsc-cancer-genomics-browser/YvKnWZSsw1Q>
+  
+  
+```{r makeNotNAs2, message=FALSE, warning=FALSE}
+title<-paste("Overall Surv. PSI 50.83")
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r firNotNas, echo = FALSE, message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group, 
+               data = survivalNotNas)
+title<-paste("Rec Free Surv PSI 50.83")
+
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Compute optimo PSI inside G0 (psi  <  50.83) 
+
+```{r optG0, echo = FALSE, message=FALSE, warning=FALSE}
+clinicalTumor<-data.frame(days_to_last_follow=finalV$days_to_last_follow, 
+                          days_to_death=finalV$days_to_death,
+                          stage=finalV$stage,
+                          gender=finalV$gender,
+                          psi=finalV$psi)
+clinicalTumor<-clinicalTumor[clinicalTumor$psi<50.83,]
+names(clinicalTumor) <- c("patient.days_to_last_followup", 
+                          "patient.days_to_death",
+                          "patient.stage_event.pathologic_stage",
+                          "patient.gender",
+                          "psi")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(clinicalTumor$psi)
+opt <- optimalSurvivalCutoff(clinicalTumor,
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)    # Optimal exon inclusion level 50.83
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinicalTumor, censoring="right",
+                              event="days_to_death", timeStart="days_to_death",
+                              group=label, scale="months")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+
+#### OS and RFS in  G0 using optimo psi 15.93
+
+```{r optG0OS, echo = FALSE, message=FALSE, warning=FALSE}
+survivalLow<-survivalNotNas[survivalNotNas$group=="g0",]
+survivalLow$group<-rep("g0", nrow(survivalLow))
+survivalLow$group[survivalLow$psi>15.93]<-"g1"
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalLow)
+title<-paste("OS PSI 15.93  (optimal psi inside g0 Low)")
+ggsurvplot(fit, 
+           data = survivalLow,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r optG0RFS, echo = FALSE,message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group,  
+               data = survivalLow)
+title<-paste("RFS PSI 15.93  (optimal psi inside g0 Low)")
+ggsurvplot(fit, 
+           data = survivalLow,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Compute optimo PSI inside G1 (psi >50.83) 
+
+```{r optG1, echo = FALSE, message=FALSE, warning=FALSE}
+clinicalTumor<-data.frame(days_to_last_follow=finalV$days_to_last_follow, 
+                          days_to_death=finalV$days_to_death,
+                          stage=finalV$stage,
+                          gender=finalV$gender,
+                          psi=finalV$psi)
+clinicalTumor<-clinicalTumor[clinicalTumor$psi>=50.83,]
+names(clinicalTumor) <- c("patient.days_to_last_followup", 
+                          "patient.days_to_death",
+                          "patient.stage_event.pathologic_stage",
+                          "patient.gender",
+                          "psi")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(clinicalTumor$psi)
+opt <- optimalSurvivalCutoff(clinicalTumor,
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)    # 
+(optimalPvalue <- opt$value)  # 
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinicalTumor, censoring="right",
+                              event="days_to_death", timeStart="days_to_death",
+                              group=label, scale="months")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+
+#### OS and RFS in  G1 using optimo psi 64.11
+
+```{r optG1OS, echo = FALSE, message=FALSE, warning=FALSE}
+survivalHigh<-survivalNotNas[survivalNotNas$group=="g1",]
+survivalHigh$group<-rep("g0", nrow(survivalHigh))
+survivalHigh$group[survivalHigh$psi>64.11]<-"g1"
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalHigh)
+title<-paste("OS PSI 64.11  (optimal psi inside g1 high)")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r optG1RFS, echo = FALSE,message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group,  
+               data = survivalHigh)
+title<-paste("RFS PSI 64.11  (optimal psi inside g1 high)")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+## (2nd strategy) Scan pvalue across PSI values (whole dataset)
+
+```{r FindOptimalPSI, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI<-survivalNotNas
+df<-data.frame(matrix(NA, 
+                      ncol=2, 
+                      nrow= length(seq(min(survPSI$psi),max(survPSI$psi), by=0.05))))
+colnames(df)<-c("psi","pval")
+values<-seq(min(survPSI$psi),
+            max(survPSI$psi), by=0.05)
+
+for (i in 1:length(values) ){
+  df[i,1]<-values[i]
+  psi=values[i]
+  survPSI$group<-rep("g0", nrow(survPSI))
+  survPSI$group[survPSI$psi>psi]<-"g1"
+  fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+  pval<-surv_pvalue(fit, data = NULL, method = "survdiff",
+                    test.for.trend = FALSE, combine = FALSE)[2]
+  df[i,2]<-pval
+}
+title<-paste(cancertype, "PSI OPTIMO",df[which.min(df$pval),1], "pval", round(df[which.min(df$pval),2], digits = 4))
+ggplot(data=df, 
+       aes(x=psi, y=pval, group=1)) + 
+  geom_line(colour="grey")+
+  theme_bw()+
+  ggtitle(title)+
+  geom_hline(yintercept=range(0.05, 0.1), color='coral',       size=0.5)
+```
+
+### OS and RFS plots **whole dataset** using optimo PSI (18.28)
+
+```{r FindOptimalPSIb, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI$group<-rep("g0", nrow(survPSI))
+survPSI$group[survPSI$psi>=18.28]<-"g1"
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo 18.28 PSI OS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r FindOptimalPSIbRFS, echo = FALSE,message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo 18.28 PSI RFS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Scan for optimal in G0 (psi <18.28)
+
+```{r FindOptimalPSIe, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI<-survivalNotNas[survivalNotNas$psi<=18.28,]
+df<-data.frame(matrix(NA, 
+                      ncol=2, 
+                      nrow= length(seq(min(survPSI$psi),max(survPSI$psi), by=0.05))))
+colnames(df)<-c("psi","pval")
+values<-seq(min(survPSI$psi),max(survPSI$psi), by=0.05)
+
+for (i in 1:length(values) ){
+  df[i,1]<-values[i]
+  psi=values[i]
+  survPSI$group<-rep("g0", nrow(survPSI))
+  survPSI$group[survPSI$psi>psi]<-"g1"
+  fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+  pval<-surv_pvalue(fit, data = NULL, method = "survdiff",
+                    test.for.trend = FALSE, combine = FALSE)[2]
+  df[i,2]<-pval
+}
+
+title<-paste(cancertype, "PSI OPTIMO G0",df[which.min(df$pval),1], "pval", round(df[which.min(df$pval),2], digits = 4))
+
+ggplot(data=df, 
+       aes(x=psi, y=pval, group=1)) + 
+  geom_line(colour="grey")+
+  theme_bw()+
+  ggtitle(title)+
+  geom_hline(yintercept=range(0.05, 0.1), color='coral',       size=0.5)
+```
+
+```{r FindOptimalPSIf, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI$group<-rep("g0", nrow(survPSI))
+survPSI$group[survPSI$psi>=11.88]<-"g1"
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G0 11.88 PSI OS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r FindOptimalPSIfRFS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G0 11.88 PSI RFS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Scan for optimal in G1 (psi >18.28)
+
+```{r FindOptimalPSIeG1, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI<-survivalNotNas[survivalNotNas$psi>=18.28,]
+df<-data.frame(matrix(NA, 
+                      ncol=2, 
+                      nrow= length(seq(min(survPSI$psi),max(survPSI$psi), by=0.05))))
+colnames(df)<-c("psi","pval")
+values<-seq(min(survPSI$psi),max(survPSI$psi), by=0.05)
+
+for (i in 1:length(values) ){
+  df[i,1]<-values[i]
+  psi=values[i]
+  survPSI$group<-rep("g0", nrow(survPSI))
+  survPSI$group[survPSI$psi>psi]<-"g1"
+  fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+  pval<-surv_pvalue(fit, data = NULL, method = "survdiff",
+                    test.for.trend = FALSE, combine = FALSE)[2]
+  df[i,2]<-pval
+}
+
+title<-paste(cancertype, "PSI OPTIMO G1",df[which.min(df$pval),1], "pval", round(df[which.min(df$pval),2], digits = 4))
+
+ggplot(data=df, 
+       aes(x=psi, y=pval, group=1)) + 
+  geom_line(colour="grey")+
+  theme_bw()+
+  ggtitle(title)+
+  geom_hline(yintercept=range(0.05, 0.1), color='coral',       size=0.5)
+```
+
+```{r FindOptimalPSIfG1, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI$group<-rep("g0", nrow(survPSI))
+survPSI$group[survPSI$psi>=21.15]<-"g1"
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G1 21.15 PSI OS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+```{r FindOptimalPSIRFSG1, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G1 21.15 PSI RFS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+## New analysis 25.05
+
+Cuando separamos los LUAD TCGA patients por supervivencia hacemos dos grupos >0.5, donde los pacientes mueren de forma más temprana. Sin embargo, en este grupo me gustaría ver algunos más detalles, podríamos ver la distribución, dentro de ese grupo por: 
+* genero, 
+* estadio y 
+* mutaciones en los tumores.
+A ver si los pacientes que tienen PSI >0.5 tienen más cosas en común.
+
+```{r moreG1, echo = FALSE,message=FALSE, warning=FALSE}
+table(survivalNotNas$group)
+survivalHigh<-survivalNotNas[survivalNotNas$group=="g1",]
+dim(survivalHigh)
+```
+
+### Divide G1 By gender, make g0=MALE, g1=FEMALE:
+
+```{r moreG1gender, echo = FALSE,message=FALSE, warning=FALSE}
+table(survivalHigh$gender)
+survivalHigh$group[survivalHigh$gender=="male"]<-"g0"
+survivalHigh$group[survivalHigh$gender=="female"]<-"g1"
+table(survivalHigh$group)
+```
+
+```{r g1GenderOS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survivalHigh)
+title<-paste("G1 Gender PSI OS")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r g1GenderRFS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survivalHigh)
+title<-paste("G1 Gender PSI RFS")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Divide G1 By AggStage, G0=early, G1=late:
+```{r moreG1AggStage, echo = FALSE,message=FALSE, warning=FALSE}
+table(survivalHigh$aggStage)
+survivalHigh$group[survivalHigh$aggStage=="early"]<-"g0"
+survivalHigh$group[survivalHigh$aggStage=="late"]<-"g1"
+table(survivalHigh$group)
+```
+
+```{r g1AggStageOS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survivalHigh)
+title<-paste("G1 AggStage PSI OS")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r g1GAggStageRFS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survivalHigh)
+title<-paste("G1 AggStage PSI RFS")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Check Mutations: in this small group (G1)
+
+```{r moreG1egfr, echo = FALSE,message=FALSE, warning=FALSE}
+print("EGFR performed") 
+print(table(survivalHigh$egfr_mutation_performed))
+#kruskal.test(finalV$psi ~ finalV$egfr_mutation_performed)
+print("EGFR results") 
+print(table(survivalHigh$egfr_mutation_result))
+
+print("kras mutation found") 
+print(table(survivalHigh$kras_mutation_found))
+
+print("kras mutation result") 
+print(table(survivalHigh$kras_mutation_result))
+```
+
+## Gender analysis whole dataset
+Viendo las diferencias significativas de NUMB exon 9 PSI male vs female. Me preguntaba si crees que esto podría tener un efecto en las gráficas de supervivencia.
+
+
+```{r GenderWhole, echo = FALSE,message=FALSE, warning=FALSE}
+survivalNotNas$group<-rep("g0", nrow(survivalNotNas))
+survivalNotNas$group[survivalNotNas$gender=="female"]<-"g1"
+table(survivalNotNas$gender)
+survivalNotNas$group[survivalNotNas$gender=="male"]<-"g0"
+survivalNotNas$group[survivalNotNas$gender=="female"]<-"g1"
+table(survivalNotNas$group)
+
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survivalNotNas)
+title<-paste("Whole dataset Gender PSI OS")
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r WholeGenderRFS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survivalNotNas)
+title<-paste("Whole Gender PSI RFS")
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+

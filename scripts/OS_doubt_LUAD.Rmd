@@ -1,0 +1,394 @@
+---
+title: "Descriptive LUAD"
+author: "Estefania Mancini"
+date: "April 2020"
+output:
+  html_document: null
+  pdf_document: default
+  df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysis of TCGA Lung Adeno C
+Original table, see <luad_clinical_psichomics.tab>.
+
+Load requiered libraries:
+``{r libraries echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, comment=FALSE, warning=FALSE} 
+library(ggplot2)
+library(survival)
+library(knitr)
+library(kableExtra)
+library(survminer)
+library(ggfortify)
+library(psichomics)
+
+```
+## Load clinical data, downloaded with *PSICHOMICS*
+
+```{r clinical, echo = FALSE, results = 'asis'}
+clinical<-read.table( "../data/luad_clinical_psichomics.tab", sep="\t", header = T, row.names = 1)
+cancertype="LUAD"
+dim(clinical)#521 2591
+kable(clinical[1:3, 1:5], caption = "CLinical data")
+```
+
+Let's select more interesting columns from column data:
+* Patient description
+```{r grep, echo = TRUE}
+gender<-grep("patient.gender", 
+             colnames(clinical))
+vitalStatus<-grep("patient.vital_status", 
+                  colnames(clinical))
+sample_type<-grep("patient.samples.sample.2.sample_type", colnames(clinical))
+age<-grep("patient.age_at_initial_pathologic_diagnosis",colnames(clinical))
+```
+
+We checked for specific/unspecific mutations:
+```{r muts, echo = TRUE}
+muts<-grep("mutation", colnames(clinical) )
+colnames(clinical)[muts]
+EGFR<-grep("EGFR",colnames(clinical),ignore.case = TRUE)
+KRAS<-grep("KRAS",colnames(clinical),ignore.case = TRUE)
+alk<-grep("alk", colnames(clinical),ignore.case = TRUE)
+```
+We found reported mutations in these genes: alk, EGFR, KRAS
+Mutations on these genes were not reported: 
+* HER2, BRAF,DDR2,AKT,FGFR,NOTCH,TP53,CDH10,NFE2L2,KMT2C,CDKN2A,FAT1 and PI3KCA
+
+Check info for translocation as well:
+```{r trans, echo = TRUE}
+trans<-grep("translocation", colnames(clinical)); 
+colnames(clinical)[trans]
+```
+
+Ientify columns for tumor description:
+```{r tumor, echo = TRUE}
+stage<-grep("patient.stage_event.pathologic_stage_tumor_stage", colnames(clinical))
+colnames(clinical)[stage]
+neoplasm_cancer_status<-grep("patient.person_neoplasm_cancer_status", colnames(clinical))
+colnames(clinical)[neoplasm_cancer_status]
+```
+
+Define the columns for analysis of survival:
+```{r overalsurivival, echo = TRUE}
+follow_up.vital_status<-grep("patient.follow_ups.follow_up.vital_status", colnames(clinical))
+days_to_death<-grep("patient.days_to_death", colnames(clinical))
+days_last_follow<-grep("patient.days_to_last_followup", colnames(clinical))
+days_last_known_alive<-grep("patient.days_to_last_known_alive", colnames(clinical))
+fup2<-grep(
+  "patient.follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment",
+  colnames(clinical))
+fup3<-  grep(
+  "patient.follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment",
+           colnames(clinical))
+fup4<-grep(
+  "patient.follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment",
+    colnames(clinical))
+newTumourI<-grep(
+  "patient.follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment", 
+  colnames(clinical))
+newTumourE<-grep(
+  "patient.new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment",
+  colnames(clinical))
+
+canonical_status<-grep("patient.bcr_canonical_check.bcr_patient_canonical_status", colnames(clinical))
+treatment_success<-grep("patient.follow_ups.follow_up.followup_treatment_success", colnames(clinical))
+therapy_outcome_success<-grep("patient.follow_ups.follow_up.primary_therapy_outcome_success", colnames(clinical))
+primary_therapy_outcome_success<-grep("patient.primary_therapy_outcome_success", colnames(clinical))
+```
+
+We made a small datframe for Recurrence Free Survival (RFS):
+```{r rfsurivival, echo = TRUE}
+RFS<-data.frame(clinical$patient.days_to_death, 
+                clinical$patient.days_to_last_followup, 
+                clinical$patient.days_to_last_known_alive,
+                clinical$patient.follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+                clinical$patient.new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)
+rownames(RFS)<-rownames(clinical)
+```
+
+Make a small dataframe with our selected columns:
+```{r subset, echo = TRUE}
+subset<-clinical[,unique(c(gender,
+                  vitalStatus,
+                  sample_type,
+                  age,
+                  muts,
+                  EGFR,#2
+                  KRAS,
+                  alk,
+                  trans,
+                  stage,
+                  neoplasm_cancer_status,
+                  follow_up.vital_status,
+                  days_to_death,
+                  days_last_follow,
+                  days_last_known_alive,
+                  fup2,
+                  fup3,
+                  fup4,
+                  newTumourI,
+                  newTumourE,
+                  canonical_status,
+                  treatment_success,
+                  therapy_outcome_success,
+                  primary_therapy_outcome_success))]
+dim(subset)
+```
+Clean a bit column names:
+```{r colsubset, echo = TRUE}
+colnames(subset)<-sub("patient.", "", colnames(subset))
+subset$stage_event.pathologic_stage_tumor_stage<-sub("stage ","",
+subset$stage_event.pathologic_stage_tumor_stage);
+```
+Prepare a new column: *Aggregate state*, where we classify states as *early* (i, ia, ib, ii, iia, iib) o *late* (iii,iiia,iiib,iv)
+
+```{r AggStage, echo = TRUE}
+subset$aggStage <- subset$stage
+subset$aggStage[subset$aggStage=="i"]<-"early"
+subset$aggStage[subset$aggStage=="ia"]<-"early"
+subset$aggStage[subset$aggStage=="ib"]<-"early"
+subset$aggStage[subset$aggStage=="ii"]<-"early"
+subset$aggStage[subset$aggStage=="iia"]<-"early"
+subset$aggStage[subset$aggStage=="iib"]<-"early"
+subset$aggStage[subset$aggStage=="iii"]<-"late"
+subset$aggStage[subset$aggStage=="iiia"]<-"late"
+subset$aggStage[subset$aggStage=="iiib"]<-"late"
+subset$aggStage[subset$aggStage=="iv"]<-"late"
+table(subset$stage_event.pathologic_stage_tumor_stage)
+table(subset$aggStage)
+```
+## Load PSI values
+Now we load PSI NUMB EXON 9 (HsaEX0044216) data, produced using vast-tools. For more info about the software/quantificatin method, see  <https://github.com/vastgroup/vast-tools>
+
+```{r psiVal, echo = FALSE}
+psiVal<-read.table("../data/psi_lung_NA_NewN3.tab", 
+                   header = T, 
+                   stringsAsFactors = F, 
+                   row.names = 1)
+sIds<-colnames(psiVal)[7:ncol(psiVal)]
+sIdsB<-gsub('\\.', '-',as.character(sIds))
+sIdsB<-gsub('^X', '',as.character(sIdsB))
+colnames(psiVal)<-gsub('\\.', '-',as.character(colnames(psiVal)))
+colnames(psiVal)<-gsub('^X', '',as.character(colnames(psiVal)))
+dim(psiVal)
+```
+Load conversion tables, for sample ID, case:
+```{r convTable, echo = FALSE}
+pt<-read.table("../data//lung_pt.files.txt", header = T, sep="\t")
+convTablePT<-data.frame(case=pt$cases.0.submitter_id, file=pt$file_id)
+convTablePT$origin<-rep("pt", nrow(convTablePT))
+stn<-read.table("../data/lung_stn.files.txt", header = T, sep="\t")
+convTableSTN<-data.frame(case=stn$cases.0.submitter_id, file=stn$file_id)
+convTableSTN$origin<-rep("stn", nrow(convTableSTN))
+ConvTotal<-rbind(convTablePT, convTableSTN)
+psiNormali<-match(convTableSTN$file, colnames(psiVal))
+psiN<-as.numeric(t(psiVal[, psiNormali]))
+notna<-which(is.na(psiN))
+psiNormal<-as.numeric(psiN[-notna])
+summary(psiNormal)
+g0Max<-max(psiNormal)
+g0Mean<-mean(psiNormal)
+dfNormal<-data.frame(psiNormal, rep("normal",length(psiNormal)))
+colnames(dfNormal)<-c("psi", "type")
+```
+
+Match samples PT:
+```{r psiTumor, echo = FALSE}
+ii<-match(sIdsB, ConvTotal$file)
+pp<-match(rownames(subset), ConvTotal$case)
+ppi<-pp[!is.na(pp)]
+ppo<-which(!is.na(pp))
+finalDF<-cbind(subset[ppo,], ConvTotal[ppi,])
+finalDF<-finalDF[finalDF$origin!="stn",]
+print(dim(finalDF))#516)
+####################################
+#Agregamos el PSI
+vv<-match(finalDF$file, colnames(psiVal))
+values<-psiVal[,vv]
+values[values=="NAold"]<-NA
+values[values=="NAnew3"]<-NA
+finalV<-as.numeric(t(values ))
+names(finalV)<-colnames(values)
+```
+Armo este DF solo para plotear Tumor vs Normal:
+```{r psiTumorDF, echo = FALSE}
+dfCancer<-data.frame(finalV, rep("tumor", length(finalV) )) 
+colnames(dfCancer)<-c("psi", "type")
+dfNormal<-data.frame(psiNormal, 
+                     rep("normal",length(psiNormal)))
+colnames(dfNormal)<-c("psi", "type")
+dfPlots<-rbind(dfCancer, dfNormal)
+isna<-which(is.na(dfPlots$psi))
+dfPlots<-dfPlots[-isna,]
+dfPlots$color<-as.character(dfPlots$type)
+dfPlots$color[dfPlots$color=="tumor"]<-"skyblue"
+dfPlots$color[dfPlots$color=="normal"]<-"tomato"
+dfPlots$color<-as.factor(dfPlots$color)
+table(dfPlots$color)
+```
+```{r stage, echo = FALSE}
+df<-data.frame(sample=names(finalV),psi=as.numeric(finalV))
+cc<-match(df$sample, finalDF$file)
+finalV<-data.frame(df, finalDF[cc,]);dim(finalV)
+finalV<-finalV[-which(is.na(finalV$psi)),];dim(finalV)#494
+finalV$status<-rep(1,  nrow(finalV))
+```
+
+
+
+# Survival Plots
+Lets prepare data for survival plots. Primero, sin remover NAS, como lo hace psichomics:
+```{r clinical0, echo = FALSE}
+#aca computamos el optimo sin remover NAs
+clinical0<-data.frame(finalV$days_to_last_follow, 
+                      finalV$days_to_death,
+                      finalV$stage,
+                      finalV$gender)
+dim(clinical0)#495 4
+names(clinical0) <- c("patient.days_to_last_followup", 
+                      "patient.days_to_death",
+                      "patient.stage_event.pathologic_stage",
+                      "patient.gender")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(finalV$psi)
+opt <- optimalSurvivalCutoff(clinical0, 
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)
+# Optimal exon inclusion level 69.40
+(optimalPvalue <- opt$value)  # Respective p-value 0.00751
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinical0, censoring="right",
+                              event="days_to_death", 
+                              timeStart="days_to_death",
+group=label, scale="years")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+## Prestar atención que acá esta la duda: el OS -> es 
+* days_to_death
+* days_to_last_followup                    
+
+Para nosotros, por definicion, el OS es el Máx entre:
+* days_to_death
+* days_to_last_followup                    
+* days_to_last_known_alive
+
+(en la presentacion de Pipeline LUAD estos plots son los de la pagina 34. Ver los N g0 y g1s)
+En las slides tiene_
+* g0: PSI < 69.41: 430 (448)
+* g1: PSI > 69.41: 46 (47)
+tt: 476 (495)
+Chequear
+## Generamos el notNAs:
+```{r makeNotNAs, echo = FALSE}
+survival<-finalV
+#OS ##########################################################
+NAs<-
+data.frame(survival$days_to_death,
+            survival$days_to_last_followup,
+            survival$days_to_last_known_alive);
+SUMNAS<-rowSums(apply(NAs, 2,is.na) ); length(SUMNAS); table(SUMNAS)#19 muestras que son triple NA
+survivalNotNas<-survival[SUMNAS!=3,]
+dim(survival)#495
+dim(survivalNotNas)#476
+survivalNotNas$days_to_death[is.na(survivalNotNas$days_to_death)]<-0
+survivalNotNas$days_to_last_followup[is.na(survivalNotNas$days_to_last_followup)]<-0
+survivalNotNas$days_to_last_known_alive[is.na(survivalNotNas$days_to_last_known_alive)]<-0
+#
+survivalNotNas$daysOS<-
+  unlist(apply(data.frame(survivalNotNas$days_to_death,
+                        survivalNotNas$days_to_last_followup,                      survivalNotNas$days_to_last_known_alive),
+               1,max));
+#RFS #########################################################
+daysRFSDF<-
+  data.frame(
+    survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)
+###################################################
+SUMNASRFS<-rowSums(apply(daysRFSDF, 2,is.na));
+survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$daysRFS<-
+  unlist(apply(data.frame(
+    survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment),
+    1,max))
+#############################################
+df<-data.frame(survivalNotNas$daysRFS,SUMNASRFS) 
+survivalNotNas$status[survivalNotNas$days_to_death==0]<-0
+#############################################
+# Be careful here is the definition
+# days are defined as RFS days
+survivalNotNas$days<-survivalNotNas$daysRFS
+survivalNotNas$days[survivalNotNas$daysRFS==0]<-
+survivalNotNas$daysOS[survivalNotNas$daysRFS==0]
+#########################################################
+#optimo
+survivalNotNas$group<-rep("g0", nrow(survivalNotNas))
+survivalNotNas$group[survivalNotNas$psi>69.41]<-"g1"
+#########################################################
+#here is OS
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalNotNas)
+#########################################################
+sum(is.infinite(survivalNotNas$daysOS))#check
+##################################
+#Plots:
+title<-paste("Optimo 69.41 PSI OS, Remuevo triple NAs en OS")
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+## Repito el plot para RFS:
+
+```{r firNotNas, echo = FALSE}
+fit <- survfit(Surv(days/30, status) ~ group, 
+               data = survivalNotNas)
+title<-paste("Optimo 69.41 PSI RFS, Remuevo triple NAs en OS")
+
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```

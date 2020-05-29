@@ -1,0 +1,493 @@
+"package"	"afmfile"	"fontfile"	"FullName"	"FamilyName"	"FontName"	"Bold"	"Italic"	"Symbol"	"afmsymfile"
+"1"	NA	"aakar-medium.afm.gz"	"/usr/share/fonts/truetype/fonts-gujr-extra/aakar-medium.ttf"	"aakar"	"aakar"	"aakar-medium"	FALSE	FALSE	FALSE	NA
+"2"	NA	"AbyssinicaSIL-R.afm.gz"	"/usr/share/fonts/truetype/abyssinica/AbyssinicaSIL-R.ttf"	"Abyssinica SIL"	"Abyssinica SIL"	"AbyssinicaSIL"	FALSE	FALSE	FALSE	NA
+"3"	NA	"ani.afm.gz"	"/usr/share/fonts/truetype/fonts-beng-extra/ani.ttf"	"Ani"	"Ani"	"Ani"	FALSE	FALSE	FALSE	NA
+"4"	NA	"AnjaliOldLipi.afm.gz"	"/usr/share/fonts/truetype/malayalam/AnjaliOldLipi.ttf"	"AnjaliOldLipi"	"AnjaliOldLipi"	"AnjaliOldLipi"	FALSE	FALSE	FALSE	NA
+"5"	NA	"Arimo-Regular.afm.gz"	"/usr/share/fonts/truetype/croscore/Arimo-Regular.ttf"	"Arimo"	"Arimo"	"Arimo"	FALSE	FALSE	FALSE	NA
+"6"	NA	"Arimo-Bold.afm.gz"	"/usr/share/fonts/truetype/croscore/Arimo-Bold.ttf"	"Arimo Bold"	"Arimo"	"Arimo-Bold"	TRUE	FALSE	FALSE	NA
+"7"	NA	"Arimo-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/croscore/Arimo-BoldItalic.ttf"	"Arimo Bold Italic"	"Arimo"	"Arimo-BoldItalic"	TRUE	TRUE	FALSE	NA
+"8"	NA	"Arimo-Italic.afm.gz"	"/usr/share/fonts/truetype/croscore/Arimo-Italic.ttf"	"Arimo Italic"	"Arimo"	"Arimo-Italic"	FALSE	TRUE	FALSE	NA
+"9"	NA	"Caladea-Bold.afm.gz"	"/usr/share/fonts/truetype/crosextra/Caladea-Bold.ttf"	"Caladea Bold"	"Caladea"	"Caladea-Bold"	TRUE	FALSE	FALSE	NA
+"10"	NA	"Caladea-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/crosextra/Caladea-BoldItalic.ttf"	"Caladea Bold Italic"	"Caladea"	"Caladea-BoldItalic"	FALSE	TRUE	FALSE	NA
+"11"	NA	"Caladea-Italic.afm.gz"	"/usr/share/fonts/truetype/crosextra/Caladea-Italic.ttf"	"Caladea Italic"	"Caladea"	"Caladea-Italic"	FALSE	TRUE	FALSE	NA
+"12"	NA	"Caladea-Regular.afm.gz"	"/usr/share/fonts/truetype/crosextra/Caladea-Regular.ttf"	"Caladea"	"Caladea"	"Caladea-Regular"	FALSE	FALSE	FALSE	NA
+"13"	NA	"Carlito-Regular.afm.gz"	"/usr/share/fonts/truetype/crosextra/Carlito-Regular.ttf"	"Carlito"	"Carlito"	"Carlito"	FALSE	FALSE	FALSE	NA
+"14"	NA	"Carlito-Bold.afm.gz"	"/usr/share/fonts/truetype/crosextra/Carlito-Bold.ttf"	"Carlito Bold"	"Carlito"	"Carlito-Bold"	TRUE	FALSE	FALSE	NA
+"15"	NA	"Carlito-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/crosextra/Carlito-BoldItalic.ttf"	"Carlito Bold Italic"	"Carlito"	"Carlito-BoldItalic"	TRUE	TRUE	FALSE	NA
+"16"	NA	"Carlito-Italic.afm.gz"	"/usr/share/fonts/truetype/crosextra/Carlito-Italic.ttf"	"Carlito Italic"	"Carlito"	"Carlito-Italic"	FALSE	TRUE	FALSE	NA
+"17"	NA	"chandas1-2.afm.gz"	"/usr/share/fonts/truetype/fonts-deva-extra/chandas1-2.ttf"	"Chandas"	"Chandas"	"Chandas"	FALSE	FALSE	FALSE	NA
+"18"	NA	"Chilanka-Regular.afm.gz"	"/usr/share/fonts/truetype/malayalam/Chilanka-Regular.ttf"	"Chilanka Regular"	"Chilanka"	"Chilanka-Regular"	FALSE	FALSE	FALSE	NA
+"19"	NA	"Comfortaa-Bold.afm.gz"	"/usr/share/fonts/truetype/comfortaa/Comfortaa-Bold.ttf"	"Comfortaa Bold"	"Comfortaa"	"Comfortaa-Bold"	TRUE	FALSE	FALSE	NA
+"20"	NA	"Comfortaa-Light.afm.gz"	"/usr/share/fonts/truetype/comfortaa/Comfortaa-Light.ttf"	"Comfortaa Light"	"Comfortaa Light"	"Comfortaa-Light"	FALSE	FALSE	FALSE	NA
+"21"	NA	"Comfortaa-Regular.afm.gz"	"/usr/share/fonts/truetype/comfortaa/Comfortaa-Regular.ttf"	"Comfortaa Regular"	"Comfortaa"	"Comfortaa-Regular"	FALSE	FALSE	FALSE	NA
+"22"	NA	"Cousine-Regular.afm.gz"	"/usr/share/fonts/truetype/croscore/Cousine-Regular.ttf"	"Cousine"	"Cousine"	"Cousine"	FALSE	FALSE	FALSE	NA
+"23"	NA	"Cousine-Bold.afm.gz"	"/usr/share/fonts/truetype/croscore/Cousine-Bold.ttf"	"Cousine Bold"	"Cousine"	"Cousine-Bold"	TRUE	FALSE	FALSE	NA
+"24"	NA	"Cousine-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/croscore/Cousine-BoldItalic.ttf"	"Cousine Bold Italic"	"Cousine"	"Cousine-BoldItalic"	TRUE	TRUE	FALSE	NA
+"25"	NA	"Cousine-Italic.afm.gz"	"/usr/share/fonts/truetype/croscore/Cousine-Italic.ttf"	"Cousine Italic"	"Cousine"	"Cousine-Italic"	FALSE	TRUE	FALSE	NA
+"26"	NA	"DejaVuMathTeXGyre.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf"	"DejaVuMathTeXGyre-Regular"	"DejaVu Math TeX Gyre"	"DejaVuMathTeXGyre-Regular"	FALSE	FALSE	FALSE	NA
+"27"	NA	"DejaVuSans.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"	"DejaVu Sans"	"DejaVu Sans"	"DejaVuSans"	FALSE	FALSE	FALSE	NA
+"28"	NA	"DejaVuSans-Bold.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"	"DejaVu Sans Bold"	"DejaVu Sans"	"DejaVuSans-Bold"	TRUE	FALSE	FALSE	NA
+"29"	NA	"DejaVuSans-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf"	"DejaVu Sans Bold Oblique"	"DejaVu Sans"	"DejaVuSans-BoldOblique"	TRUE	TRUE	FALSE	NA
+"30"	NA	"DejaVuSansCondensed.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed.ttf"	"DejaVu Sans Condensed"	"DejaVu Sans Condensed"	"DejaVuSansCondensed"	FALSE	FALSE	FALSE	NA
+"31"	NA	"DejaVuSansCondensed-Bold.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed-Bold.ttf"	"DejaVu Sans Condensed Bold"	"DejaVu Sans Condensed"	"DejaVuSansCondensed-Bold"	TRUE	FALSE	FALSE	NA
+"32"	NA	"DejaVuSansCondensed-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed-BoldOblique.ttf"	"DejaVu Sans Condensed Bold Oblique"	"DejaVu Sans Condensed"	"DejaVuSansCondensed-BoldOblique"	TRUE	TRUE	FALSE	NA
+"33"	NA	"DejaVuSansCondensed-Oblique.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed-Oblique.ttf"	"DejaVu Sans Condensed Oblique"	"DejaVu Sans Condensed"	"DejaVuSansCondensed-Oblique"	FALSE	TRUE	FALSE	NA
+"34"	NA	"DejaVuSans-ExtraLight.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSans-ExtraLight.ttf"	"DejaVu Sans ExtraLight"	"DejaVu Sans Light"	"DejaVuSans-ExtraLight"	FALSE	FALSE	FALSE	NA
+"35"	NA	"DejaVuSansMono.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"	"DejaVu Sans Mono"	"DejaVu Sans Mono"	"DejaVuSansMono"	FALSE	FALSE	FALSE	NA
+"36"	NA	"DejaVuSansMono-Bold.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"	"DejaVu Sans Mono Bold"	"DejaVu Sans Mono"	"DejaVuSansMono-Bold"	TRUE	FALSE	FALSE	NA
+"37"	NA	"DejaVuSansMono-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf"	"DejaVu Sans Mono Bold Oblique"	"DejaVu Sans Mono"	"DejaVuSansMono-BoldOblique"	TRUE	TRUE	FALSE	NA
+"38"	NA	"DejaVuSansMono-Oblique.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf"	"DejaVu Sans Mono Oblique"	"DejaVu Sans Mono"	"DejaVuSansMono-Oblique"	FALSE	TRUE	FALSE	NA
+"39"	NA	"DejaVuSans-Oblique.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf"	"DejaVu Sans Oblique"	"DejaVu Sans"	"DejaVuSans-Oblique"	FALSE	TRUE	FALSE	NA
+"40"	NA	"DejaVuSerif.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"	"DejaVu Serif"	"DejaVu Serif"	"DejaVuSerif"	FALSE	FALSE	FALSE	NA
+"41"	NA	"DejaVuSerif-Bold.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"	"DejaVu Serif Bold"	"DejaVu Serif"	"DejaVuSerif-Bold"	TRUE	FALSE	FALSE	NA
+"42"	NA	"DejaVuSerif-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf"	"DejaVu Serif Bold Italic"	"DejaVu Serif"	"DejaVuSerif-BoldItalic"	TRUE	TRUE	FALSE	NA
+"43"	NA	"DejaVuSerifCondensed.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed.ttf"	"DejaVu Serif Condensed"	"DejaVu Serif Condensed"	"DejaVuSerifCondensed"	FALSE	FALSE	FALSE	NA
+"44"	NA	"DejaVuSerifCondensed-Bold.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed-Bold.ttf"	"DejaVu Serif Condensed Bold"	"DejaVu Serif Condensed"	"DejaVuSerifCondensed-Bold"	TRUE	FALSE	FALSE	NA
+"45"	NA	"DejaVuSerifCondensed-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed-BoldItalic.ttf"	"DejaVu Serif Condensed Bold Italic"	"DejaVu Serif Condensed"	"DejaVuSerifCondensed-BoldItalic"	TRUE	TRUE	FALSE	NA
+"46"	NA	"DejaVuSerifCondensed-Italic.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed-Italic.ttf"	"DejaVu Serif Condensed Italic"	"DejaVu Serif Condensed"	"DejaVuSerifCondensed-Italic"	FALSE	TRUE	FALSE	NA
+"47"	NA	"DejaVuSerif-Italic.afm.gz"	"/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf"	"DejaVu Serif Italic"	"DejaVu Serif"	"DejaVuSerif-Italic"	FALSE	TRUE	FALSE	NA
+"48"	NA	"DroidSansFallbackFull.afm.gz"	"/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf"	"Droid Sans Fallback"	"Droid Sans Fallback"	"DroidSansFallback"	FALSE	FALSE	FALSE	NA
+"49"	NA	"Dyuthi.afm.gz"	"/usr/share/fonts/truetype/malayalam/Dyuthi.ttf"	"Dyuthi"	"Dyuthi"	"Dyuthi"	FALSE	FALSE	FALSE	NA
+"50"	NA	"EBGaramond08-Italic.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramond08-Italic.ttf"	"EB Garamond 08 Italic"	"EB Garamond 08"	"EBGaramond08-Italic"	FALSE	TRUE	FALSE	NA
+"51"	NA	"EBGaramond08-Regular.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramond08-Regular.ttf"	"EB Garamond 08 Regular"	"EB Garamond 08"	"EBGaramond08-Regular"	FALSE	FALSE	FALSE	NA
+"52"	NA	"EBGaramond12-AllSC.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramond12-AllSC.ttf"	"EB Garamond 12 Regular All SmallCaps"	"EB Garamond 12 All SC"	"EBGaramond12-AllSC"	FALSE	FALSE	FALSE	NA
+"53"	NA	"EBGaramond12-Italic.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramond12-Italic.ttf"	"EB Garamond 12 Italic"	"EB Garamond 12"	"EBGaramond12-Italic"	FALSE	TRUE	FALSE	NA
+"54"	NA	"EBGaramond-InitialsF1.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramond-InitialsF1.ttf"	"EB Garamond Initials Fill1"	"EB Garamond Initials Fill1"	"EBGaramondInitialsF1"	FALSE	FALSE	FALSE	NA
+"55"	NA	"EBGaramond-InitialsF2.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramond-InitialsF2.ttf"	"EB Garamond Initials Fill2"	"EB Garamond Initials Fill2"	"EBGaramondInitialsF2"	FALSE	FALSE	FALSE	NA
+"56"	NA	"EBGaramondSC08-Regular.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramondSC08-Regular.ttf"	"EB Garamond SmallCaps 08 Regular"	"EB Garamond SC 08"	"EBGaramondSC08-Regular"	FALSE	FALSE	FALSE	NA
+"57"	NA	"EBGaramondSC12-Regular.afm.gz"	"/usr/share/fonts/truetype/ebgaramond/EBGaramondSC12-Regular.ttf"	"EB Garamond SmallCaps 12 Regular"	"EB Garamond SC 12"	"EBGaramondSC12-Regular"	FALSE	FALSE	FALSE	NA
+"58"	NA	"fontawesome-webfont.afm.gz"	"/usr/share/fonts/truetype/font-awesome/fontawesome-webfont.ttf"	"FontAwesome"	"FontAwesome"	"FontAwesome"	FALSE	FALSE	FALSE	NA
+"59"	NA	"FreeMono.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeMono.ttf"	"FreeMono"	"FreeMono"	"FreeMono"	FALSE	FALSE	FALSE	NA
+"60"	NA	"FreeMonoBold.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf"	"FreeMono Bold"	"FreeMono"	"FreeMonoBold"	TRUE	FALSE	FALSE	NA
+"61"	NA	"FreeMonoBoldOblique.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeMonoBoldOblique.ttf"	"FreeMono Bold Oblique"	"FreeMono"	"FreeMonoBoldOblique"	TRUE	TRUE	FALSE	NA
+"62"	NA	"FreeMonoOblique.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeMonoOblique.ttf"	"FreeMono Oblique"	"FreeMono"	"FreeMonoOblique"	FALSE	TRUE	FALSE	NA
+"63"	NA	"FreeSans.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSans.ttf"	"FreeSans"	"FreeSans"	"FreeSans"	FALSE	FALSE	FALSE	NA
+"64"	NA	"FreeSansBold.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSansBold.ttf"	"FreeSans Bold"	"FreeSans"	"FreeSansBold"	TRUE	FALSE	FALSE	NA
+"65"	NA	"FreeSansBoldOblique.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSansBoldOblique.ttf"	"FreeSans Bold Oblique"	"FreeSans"	"FreeSansBoldOblique"	TRUE	TRUE	FALSE	NA
+"66"	NA	"FreeSansOblique.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSansOblique.ttf"	"FreeSans Oblique"	"FreeSans"	"FreeSansOblique"	FALSE	TRUE	FALSE	NA
+"67"	NA	"FreeSerif.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSerif.ttf"	"FreeSerif"	"FreeSerif"	"FreeSerif"	FALSE	FALSE	FALSE	NA
+"68"	NA	"FreeSerifBold.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf"	"FreeSerif Bold"	"FreeSerif"	"FreeSerifBold"	TRUE	FALSE	FALSE	NA
+"69"	NA	"FreeSerifBoldItalic.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSerifBoldItalic.ttf"	"FreeSerif Bold Italic"	"FreeSerif"	"FreeSerifBoldItalic"	TRUE	TRUE	FALSE	NA
+"70"	NA	"FreeSerifItalic.afm.gz"	"/usr/share/fonts/truetype/freefont/FreeSerifItalic.ttf"	"FreeSerif Italic"	"FreeSerif"	"FreeSerifItalic"	FALSE	TRUE	FALSE	NA
+"71"	NA	"Gargi.afm.gz"	"/usr/share/fonts/truetype/Gargi/Gargi.ttf"	"Gargi"	"Gargi"	"Gargi"	FALSE	FALSE	FALSE	NA
+"72"	NA	"Garuda.afm.gz"	"/usr/share/fonts/truetype/tlwg/Garuda.ttf"	"Garuda"	"Garuda"	"Garuda"	FALSE	FALSE	FALSE	NA
+"73"	NA	"Garuda-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Garuda-Bold.ttf"	"Garuda Bold"	"Garuda"	"Garuda-Bold"	TRUE	FALSE	FALSE	NA
+"74"	NA	"Garuda-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Garuda-BoldOblique.ttf"	"Garuda Bold Oblique"	"Garuda"	"Garuda-BoldOblique"	TRUE	TRUE	FALSE	NA
+"75"	NA	"Garuda-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Garuda-Oblique.ttf"	"Garuda Oblique"	"Garuda"	"Garuda-Oblique"	FALSE	TRUE	FALSE	NA
+"76"	NA	"Gentium-R.afm.gz"	"/usr/share/fonts/truetype/gentium/Gentium-R.ttf"	"Gentium"	"Gentium"	"Gentium"	FALSE	FALSE	FALSE	NA
+"77"	NA	"GentiumAlt-R.afm.gz"	"/usr/share/fonts/truetype/gentium/GentiumAlt-R.ttf"	"GentiumAlt"	"GentiumAlt"	"GentiumAlt"	FALSE	FALSE	FALSE	NA
+"78"	NA	"GentiumAlt-I.afm.gz"	"/usr/share/fonts/truetype/gentium/GentiumAlt-I.ttf"	"GentiumAlt Italic"	"GentiumAlt"	"GentiumAlt-Italic"	FALSE	TRUE	FALSE	NA
+"79"	NA	"GenBasR.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBasR.ttf"	"Gentium Basic"	"Gentium Basic"	"GentiumBasic"	FALSE	FALSE	FALSE	NA
+"80"	NA	"GenBasB.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBasB.ttf"	"Gentium Basic Bold"	"Gentium Basic"	"GentiumBasic-Bold"	TRUE	FALSE	FALSE	NA
+"81"	NA	"GenBasBI.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBasBI.ttf"	"Gentium Basic Bold Italic"	"Gentium Basic"	"GentiumBasic-BoldItalic"	TRUE	TRUE	FALSE	NA
+"82"	NA	"GenBasI.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBasI.ttf"	"Gentium Basic Italic"	"Gentium Basic"	"GentiumBasic-Italic"	FALSE	TRUE	FALSE	NA
+"83"	NA	"GenBkBasR.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBkBasR.ttf"	"Gentium Book Basic"	"Gentium Book Basic"	"GentiumBookBasic"	FALSE	FALSE	FALSE	NA
+"84"	NA	"GenBkBasB.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBkBasB.ttf"	"Gentium Book Basic Bold"	"Gentium Book Basic"	"GentiumBookBasic-Bold"	TRUE	FALSE	FALSE	NA
+"85"	NA	"GenBkBasBI.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBkBasBI.ttf"	"Gentium Book Basic Bold Italic"	"Gentium Book Basic"	"GentiumBookBasic-BoldItalic"	TRUE	TRUE	FALSE	NA
+"86"	NA	"GenBkBasI.afm.gz"	"/usr/share/fonts/truetype/gentium-basic/GenBkBasI.ttf"	"Gentium Book Basic Italic"	"Gentium Book Basic"	"GentiumBookBasic-Italic"	FALSE	TRUE	FALSE	NA
+"87"	NA	"Gentium-I.afm.gz"	"/usr/share/fonts/truetype/gentium/Gentium-I.ttf"	"Gentium Italic"	"Gentium"	"Gentium-Italic"	FALSE	TRUE	FALSE	NA
+"88"	NA	"GentiumPlus-R.afm.gz"	"/usr/share/fonts/truetype/gentiumplus/GentiumPlus-R.ttf"	"Gentium Plus"	"Gentium Plus"	"GentiumPlus"	FALSE	FALSE	FALSE	NA
+"89"	NA	"GentiumPlusCompact-R.afm.gz"	"/usr/share/fonts/opentype/gentiumplus/GentiumPlusCompact-R.ttf"	"Gentium Plus Compact"	"Gentium Plus Compact"	"GentiumPlusCompact"	FALSE	FALSE	FALSE	NA
+"90"	NA	"GentiumPlusCompact-I.afm.gz"	"/usr/share/fonts/opentype/gentiumplus/GentiumPlusCompact-I.ttf"	"Gentium Plus Compact Italic"	"Gentium Plus Compact"	"GentiumPlusCompact-Italic"	FALSE	TRUE	FALSE	NA
+"91"	NA	"GentiumPlus-I.afm.gz"	"/usr/share/fonts/truetype/gentiumplus/GentiumPlus-I.ttf"	"Gentium Plus Italic"	"Gentium Plus"	"GentiumPlus-Italic"	FALSE	TRUE	FALSE	NA
+"92"	NA	"Go-Bold.afm.gz"	"/usr/share/fonts/fonts-go/Go-Bold.ttf"	"Go Bold"	"Go"	"Go-Bold"	TRUE	FALSE	FALSE	NA
+"93"	NA	"Go-Bold-Italic.afm.gz"	"/usr/share/fonts/fonts-go/Go-Bold-Italic.ttf"	"Go Bold Italic"	"Go"	"Go-BoldItalic"	TRUE	TRUE	FALSE	NA
+"94"	NA	"Go-Italic.afm.gz"	"/usr/share/fonts/fonts-go/Go-Italic.ttf"	"Go Italic"	"Go"	"Go-Italic"	FALSE	TRUE	FALSE	NA
+"95"	NA	"Go-Medium.afm.gz"	"/usr/share/fonts/fonts-go/Go-Medium.ttf"	"Go Medium"	"Go Medium"	"GoMedium"	FALSE	FALSE	FALSE	NA
+"96"	NA	"Go-Medium-Italic.afm.gz"	"/usr/share/fonts/fonts-go/Go-Medium-Italic.ttf"	"Go Medium Italic"	"Go Medium"	"GoMedium-Italic"	FALSE	TRUE	FALSE	NA
+"97"	NA	"Go-Mono.afm.gz"	"/usr/share/fonts/fonts-go/Go-Mono.ttf"	"Go Mono"	"Go Mono"	"GoMono"	FALSE	FALSE	FALSE	NA
+"98"	NA	"Go-Mono-Bold.afm.gz"	"/usr/share/fonts/fonts-go/Go-Mono-Bold.ttf"	"Go Mono Bold"	"Go Mono"	"GoMono-Bold"	TRUE	FALSE	FALSE	NA
+"99"	NA	"Go-Mono-Bold-Italic.afm.gz"	"/usr/share/fonts/fonts-go/Go-Mono-Bold-Italic.ttf"	"Go Mono Bold Italic"	"Go Mono"	"GoMono-BoldItalic"	TRUE	TRUE	FALSE	NA
+"100"	NA	"Go-Mono-Italic.afm.gz"	"/usr/share/fonts/fonts-go/Go-Mono-Italic.ttf"	"Go Mono Italic"	"Go Mono"	"GoMono-Italic"	FALSE	TRUE	FALSE	NA
+"101"	NA	"Go-Regular.afm.gz"	"/usr/share/fonts/fonts-go/Go-Regular.ttf"	"Go Regular"	"Go"	"GoRegular"	FALSE	FALSE	FALSE	NA
+"102"	NA	"Gubbi.afm.gz"	"/usr/share/fonts/truetype/Gubbi/Gubbi.ttf"	"Gubbi"	"Gubbi"	"Gubbi"	FALSE	FALSE	FALSE	NA
+"103"	NA	"JamrulNormal.afm.gz"	"/usr/share/fonts/truetype/fonts-beng-extra/JamrulNormal.ttf"	"Jamrul"	"Jamrul"	"JamrulNormal"	FALSE	FALSE	FALSE	NA
+"104"	NA	"Junicode.afm.gz"	"/usr/share/fonts/truetype/junicode/Junicode.ttf"	"Junicode"	"Junicode"	"Junicode"	FALSE	FALSE	FALSE	NA
+"105"	NA	"Junicode-Bold.afm.gz"	"/usr/share/fonts/truetype/junicode/Junicode-Bold.ttf"	"Junicode Bold"	"Junicode"	"Junicode-Bold"	TRUE	FALSE	FALSE	NA
+"106"	NA	"Junicode-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/junicode/Junicode-BoldItalic.ttf"	"Junicode Bold Italic"	"Junicode"	"Junicode-BoldItalic"	TRUE	TRUE	FALSE	NA
+"107"	NA	"Junicode-Italic.afm.gz"	"/usr/share/fonts/truetype/junicode/Junicode-Italic.ttf"	"Junicode Italic"	"Junicode"	"Junicode-Italic"	FALSE	TRUE	FALSE	NA
+"108"	NA	"KacstArt.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstArt.ttf"	"KacstArt"	"KacstArt"	"KacstArt"	FALSE	FALSE	FALSE	NA
+"109"	NA	"KacstBook.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstBook.ttf"	"KacstBook"	"KacstBook"	"KacstBook"	FALSE	FALSE	FALSE	NA
+"110"	NA	"KacstDecorative.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstDecorative.ttf"	"KacstDecorative"	"KacstDecorative"	"KacstDecorative"	FALSE	FALSE	FALSE	NA
+"111"	NA	"KacstDigital.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstDigital.ttf"	"KacstDigital"	"KacstDigital"	"KacstDigital"	FALSE	FALSE	FALSE	NA
+"112"	NA	"KacstFarsi.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstFarsi.ttf"	"KacstFarsi"	"KacstFarsi"	"KacstFarsi"	FALSE	FALSE	FALSE	NA
+"113"	NA	"KacstLetter.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstLetter.ttf"	"KacstLetter"	"KacstLetter"	"KacstLetter"	FALSE	FALSE	FALSE	NA
+"114"	NA	"KacstNaskh.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstNaskh.ttf"	"KacstNaskh"	"KacstNaskh"	"KacstNaskh"	FALSE	FALSE	FALSE	NA
+"115"	NA	"KacstOffice.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstOffice.ttf"	"KacstOffice"	"KacstOffice"	"KacstOffice"	FALSE	FALSE	FALSE	NA
+"116"	NA	"KacstOne.afm.gz"	"/usr/share/fonts/truetype/kacst-one/KacstOne.ttf"	"KacstOne"	"KacstOne"	"KacstOne"	FALSE	FALSE	FALSE	NA
+"117"	NA	"KacstOne-Bold.afm.gz"	"/usr/share/fonts/truetype/kacst-one/KacstOne-Bold.ttf"	"KacstOne Bold"	"KacstOne"	"KacstOne-Bold"	TRUE	FALSE	FALSE	NA
+"118"	NA	"KacstPen.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstPen.ttf"	"KacstPen"	"KacstPen"	"KacstPen"	FALSE	FALSE	FALSE	NA
+"119"	NA	"KacstPoster.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstPoster.ttf"	"KacstPoster"	"KacstPoster"	"KacstPoster"	FALSE	FALSE	FALSE	NA
+"120"	NA	"KacstQurn.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstQurn.ttf"	"KacstQurn"	"KacstQurn"	"KacstQurn"	FALSE	FALSE	FALSE	NA
+"121"	NA	"KacstScreen.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstScreen.ttf"	"KacstScreen"	"KacstScreen"	"KacstScreen"	FALSE	FALSE	FALSE	NA
+"122"	NA	"KacstTitle.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstTitle.ttf"	"KacstTitle"	"KacstTitle"	"KacstTitle"	FALSE	FALSE	FALSE	NA
+"123"	NA	"KacstTitleL.afm.gz"	"/usr/share/fonts/truetype/kacst/KacstTitleL.ttf"	"KacstTitleL"	"KacstTitleL"	"KacstTitleL"	FALSE	FALSE	FALSE	NA
+"124"	NA	"Kalapi.afm.gz"	"/usr/share/fonts/truetype/fonts-kalapi/Kalapi.ttf"	"Kalapi"	"Kalapi"	"Kalapi"	FALSE	FALSE	FALSE	NA
+"125"	NA	"kalimati.afm.gz"	"/usr/share/fonts/truetype/fonts-deva-extra/kalimati.ttf"	"Kalimati"	"Kalimati"	"Kalimati"	FALSE	FALSE	FALSE	NA
+"126"	NA	"Karumbi.afm.gz"	"/usr/share/fonts/truetype/malayalam/Karumbi.ttf"	"Karumbi"	"Karumbi"	"Karumbi"	FALSE	FALSE	FALSE	NA
+"127"	NA	"Keraleeyam.afm.gz"	"/usr/share/fonts/truetype/malayalam/Keraleeyam.ttf"	"Keraleeyam"	"Keraleeyam"	"Keraleeyam"	TRUE	FALSE	FALSE	NA
+"128"	NA	"KhmerOS.afm.gz"	"/usr/share/fonts/truetype/ttf-khmeros-core/KhmerOS.ttf"	"Khmer OS"	"Khmer OS"	"KhmerOS"	FALSE	FALSE	FALSE	NA
+"129"	NA	"KhmerOSsys.afm.gz"	"/usr/share/fonts/truetype/ttf-khmeros-core/KhmerOSsys.ttf"	"Khmer OS System"	"Khmer OS System"	"KhmerOSsys"	FALSE	FALSE	FALSE	NA
+"130"	NA	"Kinnari.afm.gz"	"/usr/share/fonts/truetype/tlwg/Kinnari.ttf"	"Kinnari"	"Kinnari"	"Kinnari"	FALSE	FALSE	FALSE	NA
+"131"	NA	"Kinnari-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Kinnari-Bold.ttf"	"Kinnari Bold"	"Kinnari"	"Kinnari-Bold"	TRUE	FALSE	FALSE	NA
+"132"	NA	"Kinnari-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/tlwg/Kinnari-BoldItalic.ttf"	"Kinnari Bold Italic"	"Kinnari"	"Kinnari-BoldItalic"	TRUE	TRUE	FALSE	NA
+"133"	NA	"Kinnari-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Kinnari-BoldOblique.ttf"	"Kinnari Bold Oblique"	"Kinnari"	"Kinnari-BoldOblique"	TRUE	TRUE	FALSE	NA
+"134"	NA	"Kinnari-Italic.afm.gz"	"/usr/share/fonts/truetype/tlwg/Kinnari-Italic.ttf"	"Kinnari Italic"	"Kinnari"	"Kinnari-Italic"	FALSE	TRUE	FALSE	NA
+"135"	NA	"Kinnari-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Kinnari-Oblique.ttf"	"Kinnari Oblique"	"Kinnari"	"Kinnari-Oblique"	FALSE	TRUE	FALSE	NA
+"136"	NA	"Laksaman.afm.gz"	"/usr/share/fonts/truetype/tlwg/Laksaman.ttf"	"Laksaman"	"Laksaman"	"Laksaman"	FALSE	FALSE	FALSE	NA
+"137"	NA	"Laksaman-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Laksaman-Bold.ttf"	"Laksaman Bold"	"Laksaman"	"Laksaman-Bold"	TRUE	FALSE	FALSE	NA
+"138"	NA	"Laksaman-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/tlwg/Laksaman-BoldItalic.ttf"	"Laksaman Bold Italic"	"Laksaman"	"Laksaman-BoldItalic"	TRUE	TRUE	FALSE	NA
+"139"	NA	"Laksaman-Italic.afm.gz"	"/usr/share/fonts/truetype/tlwg/Laksaman-Italic.ttf"	"Laksaman Italic"	"Laksaman"	"Laksaman-Italic"	FALSE	TRUE	FALSE	NA
+"140"	NA	"Lato-Black.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Black.ttf"	"Lato Black"	"Lato Black"	"Lato-Black"	FALSE	FALSE	FALSE	NA
+"141"	NA	"Lato-BlackItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-BlackItalic.ttf"	"Lato Black Italic"	"Lato Black"	"Lato-BlackItalic"	FALSE	TRUE	FALSE	NA
+"142"	NA	"Lato-Bold.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Bold.ttf"	"Lato Bold"	"Lato"	"Lato-Bold"	TRUE	FALSE	FALSE	NA
+"143"	NA	"Lato-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-BoldItalic.ttf"	"Lato Bold Italic"	"Lato"	"Lato-BoldItalic"	TRUE	TRUE	FALSE	NA
+"144"	NA	"Lato-Hairline.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Hairline.ttf"	"Lato Hairline"	"Lato Hairline"	"Lato-Hairline"	FALSE	FALSE	FALSE	NA
+"145"	NA	"Lato-HairlineItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-HairlineItalic.ttf"	"Lato Hairline Italic"	"Lato Hairline"	"Lato-HairlineItalic"	FALSE	TRUE	FALSE	NA
+"146"	NA	"Lato-Heavy.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Heavy.ttf"	"Lato Heavy"	"Lato Heavy"	"Lato-Heavy"	FALSE	FALSE	FALSE	NA
+"147"	NA	"Lato-HeavyItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-HeavyItalic.ttf"	"Lato Heavy Italic"	"Lato Heavy"	"Lato-HeavyItalic"	FALSE	TRUE	FALSE	NA
+"148"	NA	"Lato-Italic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Italic.ttf"	"Lato Italic"	"Lato"	"Lato-Italic"	FALSE	TRUE	FALSE	NA
+"149"	NA	"Lato-Light.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Light.ttf"	"Lato Light"	"Lato Light"	"Lato-Light"	FALSE	FALSE	FALSE	NA
+"150"	NA	"Lato-LightItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-LightItalic.ttf"	"Lato Light Italic"	"Lato Light"	"Lato-LightItalic"	FALSE	TRUE	FALSE	NA
+"151"	NA	"Lato-Medium.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Medium.ttf"	"Lato Medium"	"Lato Medium"	"Lato-Medium"	FALSE	FALSE	FALSE	NA
+"152"	NA	"Lato-MediumItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-MediumItalic.ttf"	"Lato Medium Italic"	"Lato Medium"	"Lato-MediumItalic"	FALSE	TRUE	FALSE	NA
+"153"	NA	"Lato-Regular.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Regular.ttf"	"Lato Regular"	"Lato"	"Lato-Regular"	FALSE	FALSE	FALSE	NA
+"154"	NA	"Lato-Semibold.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Semibold.ttf"	"Lato Semibold"	"Lato Semibold"	"Lato-Semibold"	FALSE	FALSE	FALSE	NA
+"155"	NA	"Lato-SemiboldItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-SemiboldItalic.ttf"	"Lato Semibold Italic"	"Lato Semibold"	"Lato-SemiboldItalic"	FALSE	TRUE	FALSE	NA
+"156"	NA	"Lato-Thin.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-Thin.ttf"	"Lato Thin"	"Lato Thin"	"Lato-Thin"	FALSE	FALSE	FALSE	NA
+"157"	NA	"Lato-ThinItalic.afm.gz"	"/usr/share/fonts/truetype/lato/Lato-ThinItalic.ttf"	"Lato Thin Italic"	"Lato Thin"	"Lato-ThinItalic"	FALSE	TRUE	FALSE	NA
+"158"	NA	"LiberationMono-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationMono-Regular.ttf"	"Liberation Mono"	"Liberation Mono"	"LiberationMono"	FALSE	FALSE	FALSE	NA
+"159"	NA	"LiberationMono-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf"	"Liberation Mono"	"Liberation Mono"	"LiberationMono"	FALSE	FALSE	FALSE	NA
+"160"	NA	"LiberationMono-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationMono-Bold.ttf"	"Liberation Mono Bold"	"Liberation Mono"	"LiberationMono-Bold"	TRUE	FALSE	FALSE	NA
+"161"	NA	"LiberationMono-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf"	"Liberation Mono Bold"	"Liberation Mono"	"LiberationMono-Bold"	TRUE	FALSE	FALSE	NA
+"162"	NA	"LiberationMono-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationMono-BoldItalic.ttf"	"Liberation Mono Bold Italic"	"Liberation Mono"	"LiberationMono-BoldItalic"	TRUE	TRUE	FALSE	NA
+"163"	NA	"LiberationMono-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf"	"Liberation Mono Bold Italic"	"Liberation Mono"	"LiberationMono-BoldItalic"	TRUE	TRUE	FALSE	NA
+"164"	NA	"LiberationMono-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationMono-Italic.ttf"	"Liberation Mono Italic"	"Liberation Mono"	"LiberationMono-Italic"	FALSE	TRUE	FALSE	NA
+"165"	NA	"LiberationMono-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf"	"Liberation Mono Italic"	"Liberation Mono"	"LiberationMono-Italic"	FALSE	TRUE	FALSE	NA
+"166"	NA	"LiberationSans-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf"	"Liberation Sans"	"Liberation Sans"	"LiberationSans"	FALSE	FALSE	FALSE	NA
+"167"	NA	"LiberationSans-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"	"Liberation Sans"	"Liberation Sans"	"LiberationSans"	FALSE	FALSE	FALSE	NA
+"168"	NA	"LiberationSans-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"	"Liberation Sans Bold"	"Liberation Sans"	"LiberationSans-Bold"	TRUE	FALSE	FALSE	NA
+"169"	NA	"LiberationSans-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"	"Liberation Sans Bold"	"Liberation Sans"	"LiberationSans-Bold"	TRUE	FALSE	FALSE	NA
+"170"	NA	"LiberationSans-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSans-BoldItalic.ttf"	"Liberation Sans Bold Italic"	"Liberation Sans"	"LiberationSans-BoldItalic"	TRUE	TRUE	FALSE	NA
+"171"	NA	"LiberationSans-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf"	"Liberation Sans Bold Italic"	"Liberation Sans"	"LiberationSans-BoldItalic"	TRUE	TRUE	FALSE	NA
+"172"	NA	"LiberationSans-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSans-Italic.ttf"	"Liberation Sans Italic"	"Liberation Sans"	"LiberationSans-Italic"	FALSE	TRUE	FALSE	NA
+"173"	NA	"LiberationSans-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf"	"Liberation Sans Italic"	"Liberation Sans"	"LiberationSans-Italic"	FALSE	TRUE	FALSE	NA
+"174"	NA	"LiberationSansNarrow-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Regular.ttf"	"Liberation Sans Narrow"	"Liberation Sans Narrow"	"LiberationSansNarrow"	FALSE	FALSE	FALSE	NA
+"175"	NA	"LiberationSansNarrow-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Bold.ttf"	"Liberation Sans Narrow Bold"	"Liberation Sans Narrow"	"LiberationSansNarrow-Bold"	TRUE	FALSE	FALSE	NA
+"176"	NA	"LiberationSansNarrow-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSansNarrow-BoldItalic.ttf"	"Liberation Sans Narrow Bold Italic"	"Liberation Sans Narrow"	"LiberationSansNarrow-BoldItalic"	TRUE	TRUE	FALSE	NA
+"177"	NA	"LiberationSansNarrow-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Italic.ttf"	"Liberation Sans Narrow Italic"	"Liberation Sans Narrow"	"LiberationSansNarrow-Italic"	FALSE	TRUE	FALSE	NA
+"178"	NA	"LiberationSerif-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf"	"Liberation Serif"	"Liberation Serif"	"LiberationSerif"	FALSE	FALSE	FALSE	NA
+"179"	NA	"LiberationSerif-Regular.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"	"Liberation Serif"	"Liberation Serif"	"LiberationSerif"	FALSE	FALSE	FALSE	NA
+"180"	NA	"LiberationSerif-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSerif-Bold.ttf"	"Liberation Serif Bold"	"Liberation Serif"	"LiberationSerif-Bold"	TRUE	FALSE	FALSE	NA
+"181"	NA	"LiberationSerif-Bold.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf"	"Liberation Serif Bold"	"Liberation Serif"	"LiberationSerif-Bold"	TRUE	FALSE	FALSE	NA
+"182"	NA	"LiberationSerif-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf"	"Liberation Serif Bold Italic"	"Liberation Serif"	"LiberationSerif-BoldItalic"	TRUE	TRUE	FALSE	NA
+"183"	NA	"LiberationSerif-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSerif-BoldItalic.ttf"	"Liberation Serif Bold Italic"	"Liberation Serif"	"LiberationSerif-BoldItalic"	TRUE	TRUE	FALSE	NA
+"184"	NA	"LiberationSerif-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation2/LiberationSerif-Italic.ttf"	"Liberation Serif Italic"	"Liberation Serif"	"LiberationSerif-Italic"	FALSE	TRUE	FALSE	NA
+"185"	NA	"LiberationSerif-Italic.afm.gz"	"/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf"	"Liberation Serif Italic"	"Liberation Serif"	"LiberationSerif-Italic"	FALSE	TRUE	FALSE	NA
+"186"	NA	"LikhanNormal.afm.gz"	"/usr/share/fonts/truetype/fonts-beng-extra/LikhanNormal.ttf"	"Likhan"	"Likhan"	"LikhanNormal"	FALSE	FALSE	FALSE	NA
+"187"	NA	"lklug.afm.gz"	"/usr/share/fonts/truetype/sinhala/lklug.ttf"	"LKLUG"	"LKLUG"	"LKLUG"	FALSE	FALSE	FALSE	NA
+"188"	NA	"Lohit-Assamese.afm.gz"	"/usr/share/fonts/truetype/lohit-assamese/Lohit-Assamese.ttf"	"Lohit Assamese"	"Lohit Assamese"	"Lohit-Assamese"	FALSE	FALSE	FALSE	NA
+"189"	NA	"Lohit-Bengali.afm.gz"	"/usr/share/fonts/truetype/lohit-bengali/Lohit-Bengali.ttf"	"Lohit Bengali"	"Lohit Bengali"	"Lohit-Bengali"	FALSE	FALSE	FALSE	NA
+"190"	NA	"Lohit-Devanagari.afm.gz"	"/usr/share/fonts/truetype/lohit-devanagari/Lohit-Devanagari.ttf"	"Lohit Devanagari"	"Lohit Devanagari"	"Lohit-Devanagari"	FALSE	FALSE	FALSE	NA
+"191"	NA	"Lohit-Gujarati.afm.gz"	"/usr/share/fonts/truetype/lohit-gujarati/Lohit-Gujarati.ttf"	"Lohit Gujarati"	"Lohit Gujarati"	"Lohit-Gujarati"	FALSE	FALSE	FALSE	NA
+"192"	NA	"Lohit-Gurmukhi.afm.gz"	"/usr/share/fonts/truetype/lohit-punjabi/Lohit-Gurmukhi.ttf"	"Lohit Gurmukhi"	"Lohit Gurmukhi"	"Lohit-Gurmukhi"	FALSE	FALSE	FALSE	NA
+"193"	NA	"Lohit-Kannada.afm.gz"	"/usr/share/fonts/truetype/lohit-kannada/Lohit-Kannada.ttf"	"Lohit Kannada"	"Lohit Kannada"	"Lohit-Kannada"	FALSE	FALSE	FALSE	NA
+"194"	NA	"Lohit-Malayalam.afm.gz"	"/usr/share/fonts/truetype/lohit-malayalam/Lohit-Malayalam.ttf"	"Lohit Malayalam"	"Lohit Malayalam"	"Lohit-Malayalam"	FALSE	FALSE	FALSE	NA
+"195"	NA	"Lohit-Odia.afm.gz"	"/usr/share/fonts/truetype/lohit-oriya/Lohit-Odia.ttf"	"Lohit Odia"	"Lohit Odia"	"Lohit-Odia"	FALSE	FALSE	FALSE	NA
+"196"	NA	"Lohit-Tamil.afm.gz"	"/usr/share/fonts/truetype/lohit-tamil/Lohit-Tamil.ttf"	"Lohit Tamil"	"Lohit Tamil"	"Lohit-Tamil"	FALSE	FALSE	FALSE	NA
+"197"	NA	"Lohit-Tamil-Classical.afm.gz"	"/usr/share/fonts/truetype/lohit-tamil-classical/Lohit-Tamil-Classical.ttf"	"Lohit Tamil Classical"	"Lohit Tamil Classical"	"Lohit-Tamil-Classical"	FALSE	FALSE	FALSE	NA
+"198"	NA	"Lohit-Telugu.afm.gz"	"/usr/share/fonts/truetype/lohit-telugu/Lohit-Telugu.ttf"	"Lohit Telugu"	"Lohit Telugu"	"Lohit-Telugu"	FALSE	FALSE	FALSE	NA
+"199"	NA	"Loma.afm.gz"	"/usr/share/fonts/truetype/tlwg/Loma.ttf"	"Loma"	"Loma"	"Loma"	FALSE	FALSE	FALSE	NA
+"200"	NA	"Loma-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Loma-Bold.ttf"	"Loma Bold"	"Loma"	"Loma-Bold"	TRUE	FALSE	FALSE	NA
+"201"	NA	"Loma-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Loma-BoldOblique.ttf"	"Loma Bold Oblique"	"Loma"	"Loma-BoldOblique"	TRUE	TRUE	FALSE	NA
+"202"	NA	"Loma-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Loma-Oblique.ttf"	"Loma Oblique"	"Loma"	"Loma-Oblique"	FALSE	TRUE	FALSE	NA
+"203"	NA	"luximr.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luximr.ttf"	"Luxi Mono Regular"	"Luxi Mono"	"LuxiMono"	FALSE	FALSE	FALSE	NA
+"204"	NA	"luximb.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luximb.ttf"	"Luxi Mono Bold"	"Luxi Mono"	"LuxiMono-Bold"	TRUE	FALSE	FALSE	NA
+"205"	NA	"luximbi.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luximbi.ttf"	"Luxi Mono Bold Oblique"	"Luxi Mono"	"LuxiMono-BoldOblique"	TRUE	TRUE	FALSE	NA
+"206"	NA	"luximri.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luximri.ttf"	"Luxi Mono Oblique"	"Luxi Mono"	"LuxiMono-Oblique"	FALSE	TRUE	FALSE	NA
+"207"	NA	"luxisr.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxisr.ttf"	"Luxi Sans Regular"	"Luxi Sans"	"LuxiSans"	FALSE	FALSE	FALSE	NA
+"208"	NA	"luxisb.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxisb.ttf"	"Luxi Sans Bold"	"Luxi Sans"	"LuxiSans-Bold"	TRUE	FALSE	FALSE	NA
+"209"	NA	"luxisbi.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxisbi.ttf"	"Luxi Sans Bold Oblique"	"Luxi Sans"	"LuxiSans-BoldOblique"	TRUE	TRUE	FALSE	NA
+"210"	NA	"luxisri.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxisri.ttf"	"Luxi Sans Oblique"	"Luxi Sans"	"LuxiSans-Oblique"	FALSE	TRUE	FALSE	NA
+"211"	NA	"luxirr.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxirr.ttf"	"Luxi Serif Regular"	"Luxi Serif"	"LuxiSerif"	FALSE	FALSE	FALSE	NA
+"212"	NA	"luxirb.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxirb.ttf"	"Luxi Serif Bold"	"Luxi Serif"	"LuxiSerif-Bold"	TRUE	FALSE	FALSE	NA
+"213"	NA	"luxirbi.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxirbi.ttf"	"Luxi Serif Bold Oblique"	"Luxi Serif"	"LuxiSerif-BoldOblique"	TRUE	TRUE	FALSE	NA
+"214"	NA	"luxirri.afm.gz"	"/usr/share/fonts/truetype/ttf-xfree86-nonfree/luxirri.ttf"	"Luxi Serif Oblique"	"Luxi Serif"	"LuxiSerif-Oblique"	FALSE	TRUE	FALSE	NA
+"215"	NA	"Meera.afm.gz"	"/usr/share/fonts/truetype/malayalam/Meera.ttf"	"Meera"	"Meera"	"Meera"	FALSE	FALSE	FALSE	NA
+"216"	NA	"mitra.afm.gz"	"/usr/share/fonts/truetype/fonts-beng-extra/mitra.ttf"	"Mitra Mono"	"Mitra Mono"	"Mitra"	FALSE	FALSE	FALSE	NA
+"217"	NA	"mry_KacstQurn.afm.gz"	"/usr/share/fonts/truetype/kacst/mry_KacstQurn.ttf"	"mry_KacstQurn"	"mry_KacstQurn"	"mry-KacstQurn"	FALSE	FALSE	FALSE	NA
+"218"	NA	"MuktiNarrow.afm.gz"	"/usr/share/fonts/truetype/fonts-beng-extra/MuktiNarrow.ttf"	"Mukti Narrow"	"Mukti Narrow"	"muktinarrow"	FALSE	FALSE	FALSE	NA
+"219"	NA	"MuktiNarrowBold.afm.gz"	"/usr/share/fonts/truetype/fonts-beng-extra/MuktiNarrowBold.ttf"	"Mukti Narrow Bold"	"Mukti Narrow"	"muktinarrowbold"	TRUE	FALSE	FALSE	NA
+"220"	NA	"nakula.afm.gz"	"/usr/share/fonts/truetype/Nakula/nakula.ttf"	"Nakula"	"Nakula"	"Nakula"	FALSE	FALSE	FALSE	NA
+"221"	NA	"Navilu.afm.gz"	"/usr/share/fonts/truetype/Navilu/Navilu.ttf"	"Navilu"	"Navilu"	"Navilu"	FALSE	FALSE	FALSE	NA
+"222"	NA	"Norasi.afm.gz"	"/usr/share/fonts/truetype/tlwg/Norasi.ttf"	"Norasi"	"Norasi"	"Norasi"	FALSE	FALSE	FALSE	NA
+"223"	NA	"Norasi-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Norasi-Bold.ttf"	"Norasi Bold"	"Norasi"	"Norasi-Bold"	TRUE	FALSE	FALSE	NA
+"224"	NA	"Norasi-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/tlwg/Norasi-BoldItalic.ttf"	"Norasi Bold Italic"	"Norasi"	"Norasi-BoldItalic"	TRUE	TRUE	FALSE	NA
+"225"	NA	"Norasi-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Norasi-BoldOblique.ttf"	"Norasi Bold Oblique"	"Norasi"	"Norasi-BoldOblique"	TRUE	TRUE	FALSE	NA
+"226"	NA	"Norasi-Italic.afm.gz"	"/usr/share/fonts/truetype/tlwg/Norasi-Italic.ttf"	"Norasi Italic"	"Norasi"	"Norasi-Italic"	FALSE	TRUE	FALSE	NA
+"227"	NA	"Norasi-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Norasi-Oblique.ttf"	"Norasi Oblique"	"Norasi"	"Norasi-Oblique"	FALSE	TRUE	FALSE	NA
+"228"	NA	"NotoKufiArabic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoKufiArabic-Regular.ttf"	"Noto Kufi Arabic"	"Noto Kufi Arabic"	"NotoKufiArabic"	FALSE	FALSE	FALSE	NA
+"229"	NA	"NotoKufiArabic-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoKufiArabic-Bold.ttf"	"Noto Kufi Arabic Bold"	"Noto Kufi Arabic"	"NotoKufiArabic-Bold"	TRUE	FALSE	FALSE	NA
+"230"	NA	"NotoMono-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoMono-Regular.ttf"	"Noto Mono"	"Noto Mono"	"NotoMono"	FALSE	FALSE	FALSE	NA
+"231"	NA	"NotoNaskhArabic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf"	"Noto Naskh Arabic"	"Noto Naskh Arabic"	"NotoNaskhArabic"	FALSE	FALSE	FALSE	NA
+"232"	NA	"NotoNaskhArabic-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoNaskhArabic-Bold.ttf"	"Noto Naskh Arabic Bold"	"Noto Naskh Arabic"	"NotoNaskhArabic-Bold"	TRUE	FALSE	FALSE	NA
+"233"	NA	"NotoNaskhArabicUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoNaskhArabicUI-Regular.ttf"	"Noto Naskh Arabic UI"	"Noto Naskh Arabic UI"	"NotoNaskhArabicUI"	FALSE	FALSE	FALSE	NA
+"234"	NA	"NotoNaskhArabicUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoNaskhArabicUI-Bold.ttf"	"Noto Naskh Arabic UI Bold"	"Noto Naskh Arabic UI"	"NotoNaskhArabicUI-Bold"	TRUE	FALSE	FALSE	NA
+"235"	NA	"NotoSansAdlam-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansAdlam-Regular.ttf"	"Noto Sans Adlam Regular"	"Noto Sans Adlam"	"NotoSansAdlam-Regular"	FALSE	FALSE	FALSE	NA
+"236"	NA	"NotoSansAdlamUnjoined-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansAdlamUnjoined-Regular.ttf"	"Noto Sans Adlam Unjoined Regular"	"Noto Sans Adlam Unjoined"	"NotoSansAdlamUnjoined-Regular"	FALSE	FALSE	FALSE	NA
+"237"	NA	"NotoSansArabic-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansArabic-Bold.ttf"	"Noto Sans Arabic Bold"	"Noto Sans Arabic"	"NotoSansArabic-Bold"	TRUE	FALSE	FALSE	NA
+"238"	NA	"NotoSansArabic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf"	"Noto Sans Arabic Regular"	"Noto Sans Arabic"	"NotoSansArabic-Regular"	FALSE	FALSE	FALSE	NA
+"239"	NA	"NotoSansArabicUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansArabicUI-Bold.ttf"	"Noto Sans Arabic UI Bold"	"Noto Sans Arabic UI"	"NotoSansArabicUI-Bold"	TRUE	FALSE	FALSE	NA
+"240"	NA	"NotoSansArabicUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansArabicUI-Regular.ttf"	"Noto Sans Arabic UI Regular"	"Noto Sans Arabic UI"	"NotoSansArabicUI-Regular"	FALSE	FALSE	FALSE	NA
+"241"	NA	"NotoSansArmenian-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansArmenian-Bold.ttf"	"Noto Sans Armenian Bold"	"Noto Sans Armenian"	"NotoSansArmenian-Bold"	TRUE	FALSE	FALSE	NA
+"242"	NA	"NotoSansArmenian-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansArmenian-Regular.ttf"	"Noto Sans Armenian Regular"	"Noto Sans Armenian"	"NotoSansArmenian-Regular"	FALSE	FALSE	FALSE	NA
+"243"	NA	"NotoSansAvestan-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansAvestan-Regular.ttf"	"Noto Sans Avestan Regular"	"Noto Sans Avestan"	"NotoSansAvestan-Regular"	FALSE	FALSE	FALSE	NA
+"244"	NA	"NotoSansBamum-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansBamum-Regular.ttf"	"Noto Sans Bamum Regular"	"Noto Sans Bamum"	"NotoSansBamum-Regular"	FALSE	FALSE	FALSE	NA
+"245"	NA	"NotoSansBengali-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansBengali-Bold.ttf"	"Noto Sans Bengali Bold"	"Noto Sans Bengali"	"NotoSansBengali-Bold"	TRUE	FALSE	FALSE	NA
+"246"	NA	"NotoSansBengali-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansBengali-Regular.ttf"	"Noto Sans Bengali Regular"	"Noto Sans Bengali"	"NotoSansBengali-Regular"	FALSE	FALSE	FALSE	NA
+"247"	NA	"NotoSansBengaliUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansBengaliUI-Bold.ttf"	"Noto Sans Bengali UI Bold"	"Noto Sans Bengali UI"	"NotoSansBengaliUI-Bold"	TRUE	FALSE	FALSE	NA
+"248"	NA	"NotoSansBengaliUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansBengaliUI-Regular.ttf"	"Noto Sans Bengali UI Regular"	"Noto Sans Bengali UI"	"NotoSansBengaliUI-Regular"	FALSE	FALSE	FALSE	NA
+"249"	NA	"NotoSans-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"	"Noto Sans Bold"	"Noto Sans"	"NotoSans-Bold"	TRUE	FALSE	FALSE	NA
+"250"	NA	"NotoSans-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSans-BoldItalic.ttf"	"Noto Sans Bold Italic"	"Noto Sans"	"NotoSans-BoldItalic"	TRUE	TRUE	FALSE	NA
+"251"	NA	"NotoSansBuhid-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansBuhid-Regular.ttf"	"Noto Sans Buhid Regular"	"Noto Sans Buhid"	"NotoSansBuhid-Regular"	FALSE	FALSE	FALSE	NA
+"252"	NA	"NotoSansCarian-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansCarian-Regular.ttf"	"Noto Sans Carian Regular"	"Noto Sans Carian"	"NotoSansCarian-Regular"	FALSE	FALSE	FALSE	NA
+"253"	NA	"NotoSansChakma-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansChakma-Regular.ttf"	"Noto Sans Chakma Regular"	"Noto Sans Chakma"	"NotoSansChakma-Regular"	FALSE	FALSE	FALSE	NA
+"254"	NA	"NotoSansCherokee-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansCherokee-Bold.ttf"	"Noto Sans Cherokee Bold"	"Noto Sans Cherokee"	"NotoSansCherokee-Bold"	TRUE	FALSE	FALSE	NA
+"255"	NA	"NotoSansCherokee-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansCherokee-Regular.ttf"	"Noto Sans Cherokee Regular"	"Noto Sans Cherokee"	"NotoSansCherokee-Regular"	FALSE	FALSE	FALSE	NA
+"256"	NA	"NotoSansCypriot-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansCypriot-Regular.ttf"	"Noto Sans Cypriot Regular"	"Noto Sans Cypriot"	"NotoSansCypriot-Regular"	FALSE	FALSE	FALSE	NA
+"257"	NA	"NotoSansDeseret-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDeseret-Regular.ttf"	"Noto Sans Deseret Regular"	"Noto Sans Deseret"	"NotoSansDeseret-Regular"	FALSE	FALSE	FALSE	NA
+"258"	NA	"NotoSansDevanagari-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDevanagari-Bold.ttf"	"Noto Sans Devanagari Bold"	"Noto Sans Devanagari"	"NotoSansDevanagari-Bold"	TRUE	FALSE	FALSE	NA
+"259"	NA	"NotoSansDevanagari-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf"	"Noto Sans Devanagari Regular"	"Noto Sans Devanagari"	"NotoSansDevanagari-Regular"	FALSE	FALSE	FALSE	NA
+"260"	NA	"NotoSansDevanagariUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDevanagariUI-Bold.ttf"	"Noto Sans Devanagari UI Bold"	"Noto Sans Devanagari UI"	"NotoSansDevanagariUI-Bold"	TRUE	FALSE	FALSE	NA
+"261"	NA	"NotoSansDevanagariUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDevanagariUI-Regular.ttf"	"Noto Sans Devanagari UI Regular"	"Noto Sans Devanagari UI"	"NotoSansDevanagariUI-Regular"	FALSE	FALSE	FALSE	NA
+"262"	NA	"NotoSansDisplay-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDisplay-Bold.ttf"	"Noto Sans Display Bold"	"Noto Sans Disp"	"NotoSansDisplay-Bold"	TRUE	FALSE	FALSE	NA
+"263"	NA	"NotoSansDisplay-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDisplay-BoldItalic.ttf"	"Noto Sans Display Bold Italic"	"Noto Sans Disp"	"NotoSansDisplay-BoldItalic"	TRUE	TRUE	FALSE	NA
+"264"	NA	"NotoSansDisplay-Italic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDisplay-Italic.ttf"	"Noto Sans Display Italic"	"Noto Sans Disp"	"NotoSansDisplay-Italic"	FALSE	TRUE	FALSE	NA
+"265"	NA	"NotoSansDisplay-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansDisplay-Regular.ttf"	"Noto Sans Display Regular"	"Noto Sans Disp"	"NotoSansDisplay-Regular"	FALSE	FALSE	FALSE	NA
+"266"	NA	"NotoSansEthiopic-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansEthiopic-Bold.ttf"	"Noto Sans Ethiopic Bold"	"Noto Sans Ethiopic"	"NotoSansEthiopic-Bold"	TRUE	FALSE	FALSE	NA
+"267"	NA	"NotoSansEthiopic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansEthiopic-Regular.ttf"	"Noto Sans Ethiopic Regular"	"Noto Sans Ethiopic"	"NotoSansEthiopic-Regular"	FALSE	FALSE	FALSE	NA
+"268"	NA	"NotoSansGeorgian-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGeorgian-Bold.ttf"	"Noto Sans Georgian Bold"	"Noto Sans Georgian"	"NotoSansGeorgian-Bold"	TRUE	FALSE	FALSE	NA
+"269"	NA	"NotoSansGeorgian-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGeorgian-Regular.ttf"	"Noto Sans Georgian Regular"	"Noto Sans Georgian"	"NotoSansGeorgian-Regular"	FALSE	FALSE	FALSE	NA
+"270"	NA	"NotoSansGlagolitic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGlagolitic-Regular.ttf"	"Noto Sans Glagolitic Regular"	"Noto Sans Glagolitic"	"NotoSansGlagolitic-Regular"	FALSE	FALSE	FALSE	NA
+"271"	NA	"NotoSansGothic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGothic-Regular.ttf"	"Noto Sans Gothic Regular"	"Noto Sans Gothic"	"NotoSansGothic-Regular"	FALSE	FALSE	FALSE	NA
+"272"	NA	"NotoSansGujarati-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGujarati-Regular.ttf"	"Noto Sans Gujarati"	"Noto Sans Gujarati"	"NotoSansGujarati"	FALSE	FALSE	FALSE	NA
+"273"	NA	"NotoSansGujarati-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGujarati-Bold.ttf"	"Noto Sans Gujarati Bold"	"Noto Sans Gujarati"	"NotoSansGujarati-Bold"	TRUE	FALSE	FALSE	NA
+"274"	NA	"NotoSansGujaratiUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGujaratiUI-Regular.ttf"	"Noto Sans Gujarati UI"	"Noto Sans Gujarati UI"	"NotoSansGujaratiUI"	FALSE	FALSE	FALSE	NA
+"275"	NA	"NotoSansGujaratiUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGujaratiUI-Bold.ttf"	"Noto Sans Gujarati UI Bold"	"Noto Sans Gujarati UI"	"NotoSansGujaratiUI-Bold"	TRUE	FALSE	FALSE	NA
+"276"	NA	"NotoSansGurmukhi-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf"	"Noto Sans Gurmukhi"	"Noto Sans Gurmukhi"	"NotoSansGurmukhi"	FALSE	FALSE	FALSE	NA
+"277"	NA	"NotoSansGurmukhi-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGurmukhi-Bold.ttf"	"Noto Sans Gurmukhi Bold"	"Noto Sans Gurmukhi"	"NotoSansGurmukhi-Bold"	TRUE	FALSE	FALSE	NA
+"278"	NA	"NotoSansGurmukhiUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGurmukhiUI-Regular.ttf"	"Noto Sans Gurmukhi UI"	"Noto Sans Gurmukhi UI"	"NotoSansGurmukhiUI"	FALSE	FALSE	FALSE	NA
+"279"	NA	"NotoSansGurmukhiUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansGurmukhiUI-Bold.ttf"	"Noto Sans Gurmukhi UI Bold"	"Noto Sans Gurmukhi UI"	"NotoSansGurmukhiUI-Bold"	TRUE	FALSE	FALSE	NA
+"280"	NA	"NotoSansHebrew-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansHebrew-Bold.ttf"	"Noto Sans Hebrew Bold"	"Noto Sans Hebrew"	"NotoSansHebrew-Bold"	TRUE	FALSE	FALSE	NA
+"281"	NA	"NotoSansHebrew-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf"	"Noto Sans Hebrew Regular"	"Noto Sans Hebrew"	"NotoSansHebrew-Regular"	FALSE	FALSE	FALSE	NA
+"282"	NA	"NotoSans-Italic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSans-Italic.ttf"	"Noto Sans Italic"	"Noto Sans"	"NotoSans-Italic"	FALSE	TRUE	FALSE	NA
+"283"	NA	"NotoSansKannada-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKannada-Regular.ttf"	"Noto Sans Kannada"	"Noto Sans Kannada"	"NotoSansKannada"	FALSE	FALSE	FALSE	NA
+"284"	NA	"NotoSansKannada-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKannada-Bold.ttf"	"Noto Sans Kannada Bold"	"Noto Sans Kannada"	"NotoSansKannada-Bold"	TRUE	FALSE	FALSE	NA
+"285"	NA	"NotoSansKannadaUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKannadaUI-Regular.ttf"	"Noto Sans Kannada UI"	"Noto Sans Kannada UI"	"NotoSansKannadaUI"	FALSE	FALSE	FALSE	NA
+"286"	NA	"NotoSansKannadaUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKannadaUI-Bold.ttf"	"Noto Sans Kannada UI Bold"	"Noto Sans Kannada UI"	"NotoSansKannadaUI-Bold"	TRUE	FALSE	FALSE	NA
+"287"	NA	"NotoSansKayahLi-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKayahLi-Regular.ttf"	"Noto Sans Kayah Li Regular"	"Noto Sans Kayah Li"	"NotoSansKayahLi-Regular"	FALSE	FALSE	FALSE	NA
+"288"	NA	"NotoSansKhmer-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKhmer-Bold.ttf"	"Noto Sans Khmer Bold"	"Noto Sans Khmer"	"NotoSansKhmer-Bold"	TRUE	FALSE	FALSE	NA
+"289"	NA	"NotoSansKhmer-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKhmer-Regular.ttf"	"Noto Sans Khmer Regular"	"Noto Sans Khmer"	"NotoSansKhmer-Regular"	FALSE	FALSE	FALSE	NA
+"290"	NA	"NotoSansKhmerUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKhmerUI-Bold.ttf"	"Noto Sans Khmer UI Bold"	"Noto Sans Khmer UI"	"NotoSansKhmerUI-Bold"	TRUE	FALSE	FALSE	NA
+"291"	NA	"NotoSansKhmerUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansKhmerUI-Regular.ttf"	"Noto Sans Khmer UI Regular"	"Noto Sans Khmer UI"	"NotoSansKhmerUI-Regular"	FALSE	FALSE	FALSE	NA
+"292"	NA	"NotoSansLao-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansLao-Bold.ttf"	"Noto Sans Lao Bold"	"Noto Sans Lao"	"NotoSansLao-Bold"	TRUE	FALSE	FALSE	NA
+"293"	NA	"NotoSansLao-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansLao-Regular.ttf"	"Noto Sans Lao Regular"	"Noto Sans Lao"	"NotoSansLao-Regular"	FALSE	FALSE	FALSE	NA
+"294"	NA	"NotoSansLaoUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansLaoUI-Bold.ttf"	"Noto Sans Lao UI Bold"	"Noto Sans Lao UI"	"NotoSansLaoUI-Bold"	TRUE	FALSE	FALSE	NA
+"295"	NA	"NotoSansLaoUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansLaoUI-Regular.ttf"	"Noto Sans Lao UI Regular"	"Noto Sans Lao UI"	"NotoSansLaoUI-Regular"	FALSE	FALSE	FALSE	NA
+"296"	NA	"NotoSansLisu-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansLisu-Regular.ttf"	"Noto Sans Lisu Regular"	"Noto Sans Lisu"	"NotoSansLisu-Regular"	FALSE	FALSE	FALSE	NA
+"297"	NA	"NotoSansMalayalam-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf"	"Noto Sans Malayalam"	"Noto Sans Malayalam"	"NotoSansMalayalam"	FALSE	FALSE	FALSE	NA
+"298"	NA	"NotoSansMalayalam-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMalayalam-Bold.ttf"	"Noto Sans Malayalam Bold"	"Noto Sans Malayalam"	"NotoSansMalayalam-Bold"	TRUE	FALSE	FALSE	NA
+"299"	NA	"NotoSansMalayalamUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMalayalamUI-Regular.ttf"	"Noto Sans Malayalam UI"	"Noto Sans Malayalam UI"	"NotoSansMalayalamUI"	FALSE	FALSE	FALSE	NA
+"300"	NA	"NotoSansMalayalamUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMalayalamUI-Bold.ttf"	"Noto Sans Malayalam UI Bold"	"Noto Sans Malayalam UI"	"NotoSansMalayalamUI-Bold"	TRUE	FALSE	FALSE	NA
+"301"	NA	"NotoSansMandaic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMandaic-Regular.ttf"	"Noto Sans Mandaic Regular"	"Noto Sans Mandaic"	"NotoSansMandaic-Regular"	FALSE	FALSE	FALSE	NA
+"302"	NA	"NotoSansMono-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMono-Bold.ttf"	"Noto Sans Mono Bold"	"Noto Sans Mono"	"NotoSansMono-Bold"	TRUE	FALSE	FALSE	NA
+"303"	NA	"NotoSansMono-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMono-Regular.ttf"	"Noto Sans Mono Regular"	"Noto Sans Mono"	"NotoSansMono-Regular"	FALSE	FALSE	FALSE	NA
+"304"	NA	"NotoSansMyanmar-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMyanmar-Bold.ttf"	"Noto Sans Myanmar Bold"	"Noto Sans Myanmar"	"NotoSansMyanmar-Bold"	TRUE	FALSE	FALSE	NA
+"305"	NA	"NotoSansMyanmar-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf"	"Noto Sans Myanmar Regular"	"Noto Sans Myanmar"	"NotoSansMyanmar-Regular"	FALSE	FALSE	FALSE	NA
+"306"	NA	"NotoSansMyanmarUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMyanmarUI-Bold.ttf"	"Noto Sans Myanmar UI Bold"	"Noto Sans Myanmar UI"	"NotoSansMyanmarUI-Bold"	TRUE	FALSE	FALSE	NA
+"307"	NA	"NotoSansMyanmarUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansMyanmarUI-Regular.ttf"	"Noto Sans Myanmar UI Regular"	"Noto Sans Myanmar UI"	"NotoSansMyanmarUI-Regular"	FALSE	FALSE	FALSE	NA
+"308"	NA	"NotoSansNKo-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansNKo-Regular.ttf"	"Noto Sans NKo Regular"	"Noto Sans N'Ko"	"NotoSansNKo-Regular"	FALSE	FALSE	FALSE	NA
+"309"	NA	"NotoSansOlChiki-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOlChiki-Regular.ttf"	"Noto Sans Ol Chiki Regular"	"Noto Sans Ol Chiki"	"NotoSansOlChiki-Regular"	FALSE	FALSE	FALSE	NA
+"310"	NA	"NotoSansOldTurkic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOldTurkic-Regular.ttf"	"Noto Sans Old Turkic Regular"	"Noto Sans Old Turkic"	"NotoSansOldTurkic-Regular"	FALSE	FALSE	FALSE	NA
+"311"	NA	"NotoSansOriya-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf"	"Noto Sans Oriya"	"Noto Sans Oriya"	"NotoSansOriya"	FALSE	FALSE	FALSE	NA
+"312"	NA	"NotoSansOriya-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOriya-Bold.ttf"	"Noto Sans Oriya Bold"	"Noto Sans Oriya"	"NotoSansOriya-Bold"	TRUE	FALSE	FALSE	NA
+"313"	NA	"NotoSansOriyaUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOriyaUI-Regular.ttf"	"Noto Sans Oriya UI"	"Noto Sans Oriya UI"	"NotoSansOriyaUI"	FALSE	FALSE	FALSE	NA
+"314"	NA	"NotoSansOriyaUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOriyaUI-Bold.ttf"	"Noto Sans Oriya UI Bold"	"Noto Sans Oriya UI"	"NotoSansOriyaUI-Bold"	TRUE	FALSE	FALSE	NA
+"315"	NA	"NotoSansOsage-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOsage-Regular.ttf"	"Noto Sans Osage Regular"	"Noto Sans Osage"	"NotoSansOsage-Regular"	FALSE	FALSE	FALSE	NA
+"316"	NA	"NotoSansOsmanya-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansOsmanya-Regular.ttf"	"Noto Sans Osmanya Regular"	"Noto Sans Osmanya"	"NotoSansOsmanya-Regular"	FALSE	FALSE	FALSE	NA
+"317"	NA	"NotoSans-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf"	"Noto Sans Regular"	"Noto Sans"	"NotoSans-Regular"	FALSE	FALSE	FALSE	NA
+"318"	NA	"NotoSansShavian-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansShavian-Regular.ttf"	"Noto Sans Shavian Regular"	"Noto Sans Shavian"	"NotoSansShavian-Regular"	FALSE	FALSE	FALSE	NA
+"319"	NA	"NotoSansSinhala-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansSinhala-Bold.ttf"	"Noto Sans Sinhala Bold"	"Noto Sans Sinhala"	"NotoSansSinhala-Bold"	TRUE	FALSE	FALSE	NA
+"320"	NA	"NotoSansSinhala-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansSinhala-Regular.ttf"	"Noto Sans Sinhala Regular"	"Noto Sans Sinhala"	"NotoSansSinhala-Regular"	FALSE	FALSE	FALSE	NA
+"321"	NA	"NotoSansSinhalaUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansSinhalaUI-Bold.ttf"	"Noto Sans Sinhala UI Bold"	"Noto Sans Sinhala UI"	"NotoSansSinhalaUI-Bold"	TRUE	FALSE	FALSE	NA
+"322"	NA	"NotoSansSinhalaUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansSinhalaUI-Regular.ttf"	"Noto Sans Sinhala UI Regular"	"Noto Sans Sinhala UI"	"NotoSansSinhalaUI-Regular"	FALSE	FALSE	FALSE	NA
+"323"	NA	"NotoSansSymbols-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansSymbols-Bold.ttf"	"Noto Sans Symbols Bold"	"Noto Sans Symbols"	"NotoSansSymbols-Bold"	TRUE	FALSE	TRUE	NA
+"324"	NA	"NotoSansSymbols-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansSymbols-Regular.ttf"	"Noto Sans Symbols Regular"	"Noto Sans Symbols"	"NotoSansSymbols-Regular"	FALSE	FALSE	TRUE	NA
+"325"	NA	"NotoSansTamil-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTamil-Bold.ttf"	"Noto Sans Tamil Bold"	"Noto Sans Tamil"	"NotoSansTamil-Bold"	TRUE	FALSE	FALSE	NA
+"326"	NA	"NotoSansTamil-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf"	"Noto Sans Tamil Regular"	"Noto Sans Tamil"	"NotoSansTamil-Regular"	FALSE	FALSE	FALSE	NA
+"327"	NA	"NotoSansTamilUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTamilUI-Bold.ttf"	"Noto Sans Tamil UI Bold"	"Noto Sans Tamil UI"	"NotoSansTamilUI-Bold"	TRUE	FALSE	FALSE	NA
+"328"	NA	"NotoSansTamilUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTamilUI-Regular.ttf"	"Noto Sans Tamil UI Regular"	"Noto Sans Tamil UI"	"NotoSansTamilUI-Regular"	FALSE	FALSE	FALSE	NA
+"329"	NA	"NotoSansTelugu-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTelugu-Regular.ttf"	"Noto Sans Telugu"	"Noto Sans Telugu"	"NotoSansTelugu"	FALSE	FALSE	FALSE	NA
+"330"	NA	"NotoSansTelugu-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTelugu-Bold.ttf"	"Noto Sans Telugu Bold"	"Noto Sans Telugu"	"NotoSansTelugu-Bold"	TRUE	FALSE	FALSE	NA
+"331"	NA	"NotoSansTeluguUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTeluguUI-Regular.ttf"	"Noto Sans Telugu UI"	"Noto Sans Telugu UI"	"NotoSansTeluguUI"	FALSE	FALSE	FALSE	NA
+"332"	NA	"NotoSansTeluguUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTeluguUI-Bold.ttf"	"Noto Sans Telugu UI Bold"	"Noto Sans Telugu UI"	"NotoSansTeluguUI-Bold"	TRUE	FALSE	FALSE	NA
+"333"	NA	"NotoSansThaana-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansThaana-Regular.ttf"	"Noto Sans Thaana"	"Noto Sans Thaana"	"NotoSansThaana"	FALSE	FALSE	FALSE	NA
+"334"	NA	"NotoSansThaana-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansThaana-Bold.ttf"	"Noto Sans Thaana Bold"	"Noto Sans Thaana"	"NotoSansThaana-Bold"	TRUE	FALSE	FALSE	NA
+"335"	NA	"NotoSansThai-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansThai-Bold.ttf"	"Noto Sans Thai Bold"	"Noto Sans Thai"	"NotoSansThai-Bold"	TRUE	FALSE	FALSE	NA
+"336"	NA	"NotoSansThai-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansThai-Regular.ttf"	"Noto Sans Thai Regular"	"Noto Sans Thai"	"NotoSansThai-Regular"	FALSE	FALSE	FALSE	NA
+"337"	NA	"NotoSansThaiUI-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansThaiUI-Bold.ttf"	"Noto Sans Thai UI Bold"	"Noto Sans Thai UI"	"NotoSansThaiUI-Bold"	TRUE	FALSE	FALSE	NA
+"338"	NA	"NotoSansThaiUI-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansThaiUI-Regular.ttf"	"Noto Sans Thai UI Regular"	"Noto Sans Thai UI"	"NotoSansThaiUI-Regular"	FALSE	FALSE	FALSE	NA
+"339"	NA	"NotoSansTibetan-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTibetan-Regular.ttf"	"Noto Sans Tibetan"	"Noto Sans Tibetan"	"NotoSansTibetan"	FALSE	FALSE	FALSE	NA
+"340"	NA	"NotoSansTibetan-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTibetan-Bold.ttf"	"Noto Sans Tibetan Bold"	"Noto Sans Tibetan"	"NotoSansTibetan-Bold"	TRUE	FALSE	FALSE	NA
+"341"	NA	"NotoSansTifinagh-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansTifinagh-Regular.ttf"	"Noto Sans Tifinagh Regular"	"Noto Sans Tifinagh"	"NotoSansTifinagh-Regular"	FALSE	FALSE	FALSE	NA
+"342"	NA	"NotoSansVai-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSansVai-Regular.ttf"	"Noto Sans Vai Regular"	"Noto Sans Vai"	"NotoSansVai-Regular"	FALSE	FALSE	FALSE	NA
+"343"	NA	"NotoSerifArmenian-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifArmenian-Bold.ttf"	"Noto Serif Armenian Bold"	"Noto Serif Armenian"	"NotoSerifArmenian-Bold"	TRUE	FALSE	FALSE	NA
+"344"	NA	"NotoSerifArmenian-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifArmenian-Regular.ttf"	"Noto Serif Armenian Regular"	"Noto Serif Armenian"	"NotoSerifArmenian-Regular"	FALSE	FALSE	FALSE	NA
+"345"	NA	"NotoSerifBengali-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf"	"Noto Serif Bengali"	"Noto Serif Bengali"	"NotoSerifBengali"	FALSE	FALSE	FALSE	NA
+"346"	NA	"NotoSerifBengali-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifBengali-Bold.ttf"	"Noto Serif Bengali Bold"	"Noto Serif Bengali"	"NotoSerifBengali-Bold"	TRUE	FALSE	FALSE	NA
+"347"	NA	"NotoSerif-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerif-Bold.ttf"	"Noto Serif Bold"	"Noto Serif"	"NotoSerif-Bold"	TRUE	FALSE	FALSE	NA
+"348"	NA	"NotoSerif-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerif-BoldItalic.ttf"	"Noto Serif Bold Italic"	"Noto Serif"	"NotoSerif-BoldItalic"	TRUE	TRUE	FALSE	NA
+"349"	NA	"NotoSerifDevanagari-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf"	"Noto Serif Devanagari"	"Noto Serif Devanagari"	"NotoSerifDevanagari"	FALSE	FALSE	FALSE	NA
+"350"	NA	"NotoSerifDevanagari-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifDevanagari-Bold.ttf"	"Noto Serif Devanagari Bold"	"Noto Serif Devanagari"	"NotoSerifDevanagari-Bold"	TRUE	FALSE	FALSE	NA
+"351"	NA	"NotoSerifDisplay-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifDisplay-Bold.ttf"	"Noto Serif Display Bold"	"Noto Serif Disp"	"NotoSerifDisplay-Bold"	TRUE	FALSE	FALSE	NA
+"352"	NA	"NotoSerifDisplay-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifDisplay-BoldItalic.ttf"	"Noto Serif Display Bold Italic"	"Noto Serif Disp"	"NotoSerifDisplay-BoldItalic"	TRUE	TRUE	FALSE	NA
+"353"	NA	"NotoSerifDisplay-Italic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifDisplay-Italic.ttf"	"Noto Serif Display Italic"	"Noto Serif Disp"	"NotoSerifDisplay-Italic"	FALSE	TRUE	FALSE	NA
+"354"	NA	"NotoSerifDisplay-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifDisplay-Regular.ttf"	"Noto Serif Display Regular"	"Noto Serif Disp"	"NotoSerifDisplay-Regular"	FALSE	FALSE	FALSE	NA
+"355"	NA	"NotoSerifEthiopic-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifEthiopic-Bold.ttf"	"Noto Serif Ethiopic Bold"	"Noto Serif Ethiopic"	"NotoSerifEthiopic-Bold"	TRUE	FALSE	FALSE	NA
+"356"	NA	"NotoSerifEthiopic-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifEthiopic-Regular.ttf"	"Noto Serif Ethiopic Regular"	"Noto Serif Ethiopic"	"NotoSerifEthiopic-Regular"	FALSE	FALSE	FALSE	NA
+"357"	NA	"NotoSerifGeorgian-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifGeorgian-Bold.ttf"	"Noto Serif Georgian Bold"	"Noto Serif Georgian"	"NotoSerifGeorgian-Bold"	TRUE	FALSE	FALSE	NA
+"358"	NA	"NotoSerifGeorgian-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifGeorgian-Regular.ttf"	"Noto Serif Georgian Regular"	"Noto Serif Georgian"	"NotoSerifGeorgian-Regular"	FALSE	FALSE	FALSE	NA
+"359"	NA	"NotoSerifGujarati-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf"	"Noto Serif Gujarati"	"Noto Serif Gujarati"	"NotoSerifGujarati"	FALSE	FALSE	FALSE	NA
+"360"	NA	"NotoSerifGujarati-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifGujarati-Bold.ttf"	"Noto Serif Gujarati Bold"	"Noto Serif Gujarati"	"NotoSerifGujarati-Bold"	TRUE	FALSE	FALSE	NA
+"361"	NA	"NotoSerifHebrew-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifHebrew-Bold.ttf"	"Noto Serif Hebrew Bold"	"Noto Serif Hebrew"	"NotoSerifHebrew-Bold"	TRUE	FALSE	FALSE	NA
+"362"	NA	"NotoSerifHebrew-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifHebrew-Regular.ttf"	"Noto Serif Hebrew Regular"	"Noto Serif Hebrew"	"NotoSerifHebrew-Regular"	FALSE	FALSE	FALSE	NA
+"363"	NA	"NotoSerif-Italic.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerif-Italic.ttf"	"Noto Serif Italic"	"Noto Serif"	"NotoSerif-Italic"	FALSE	TRUE	FALSE	NA
+"364"	NA	"NotoSerifKannada-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf"	"Noto Serif Kannada"	"Noto Serif Kannada"	"NotoSerifKannada"	FALSE	FALSE	FALSE	NA
+"365"	NA	"NotoSerifKannada-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifKannada-Bold.ttf"	"Noto Serif Kannada Bold"	"Noto Serif Kannada"	"NotoSerifKannada-Bold"	TRUE	FALSE	FALSE	NA
+"366"	NA	"NotoSerifKhmer-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifKhmer-Bold.ttf"	"Noto Serif Khmer Bold"	"Noto Serif Khmer"	"NotoSerifKhmer-Bold"	TRUE	FALSE	FALSE	NA
+"367"	NA	"NotoSerifKhmer-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf"	"Noto Serif Khmer Regular"	"Noto Serif Khmer"	"NotoSerifKhmer-Regular"	FALSE	FALSE	FALSE	NA
+"368"	NA	"NotoSerifLao-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifLao-Bold.ttf"	"Noto Serif Lao Bold"	"Noto Serif Lao"	"NotoSerifLao-Bold"	TRUE	FALSE	FALSE	NA
+"369"	NA	"NotoSerifLao-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf"	"Noto Serif Lao Regular"	"Noto Serif Lao"	"NotoSerifLao-Regular"	FALSE	FALSE	FALSE	NA
+"370"	NA	"NotoSerifMalayalam-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf"	"Noto Serif Malayalam"	"Noto Serif Malayalam"	"NotoSerifMalayalam"	FALSE	FALSE	FALSE	NA
+"371"	NA	"NotoSerifMalayalam-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifMalayalam-Bold.ttf"	"Noto Serif Malayalam Bold"	"Noto Serif Malayalam"	"NotoSerifMalayalam-Bold"	TRUE	FALSE	FALSE	NA
+"372"	NA	"NotoSerifMyanmar-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifMyanmar-Bold.ttf"	"Noto Serif Myanmar Bold"	"Noto Serif Myanmar"	"NotoSerifMyanmar-Bold"	TRUE	FALSE	FALSE	NA
+"373"	NA	"NotoSerifMyanmar-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifMyanmar-Regular.ttf"	"Noto Serif Myanmar Regular"	"Noto Serif Myanmar"	"NotoSerifMyanmar-Regular"	FALSE	FALSE	FALSE	NA
+"374"	NA	"NotoSerif-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerif-Regular.ttf"	"Noto Serif Regular"	"Noto Serif"	"NotoSerif-Regular"	FALSE	FALSE	FALSE	NA
+"375"	NA	"NotoSerifSinhala-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifSinhala-Bold.ttf"	"Noto Serif Sinhala Bold"	"Noto Serif Sinhala"	"NotoSerifSinhala-Bold"	TRUE	FALSE	FALSE	NA
+"376"	NA	"NotoSerifSinhala-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf"	"Noto Serif Sinhala Regular"	"Noto Serif Sinhala"	"NotoSerifSinhala-Regular"	FALSE	FALSE	FALSE	NA
+"377"	NA	"NotoSerifTamil-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifTamil-Bold.ttf"	"Noto Serif Tamil Bold"	"Noto Serif Tamil"	"NotoSerifTamil-Bold"	TRUE	FALSE	FALSE	NA
+"378"	NA	"NotoSerifTamil-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifTamil-Regular.ttf"	"Noto Serif Tamil Regular"	"Noto Serif Tamil"	"NotoSerifTamil-Regular"	FALSE	FALSE	FALSE	NA
+"379"	NA	"NotoSerifTelugu-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf"	"Noto Serif Telugu"	"Noto Serif Telugu"	"NotoSerifTelugu"	FALSE	FALSE	FALSE	NA
+"380"	NA	"NotoSerifTelugu-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifTelugu-Bold.ttf"	"Noto Serif Telugu Bold"	"Noto Serif Telugu"	"NotoSerifTelugu-Bold"	TRUE	FALSE	FALSE	NA
+"381"	NA	"NotoSerifThai-Bold.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifThai-Bold.ttf"	"Noto Serif Thai Bold"	"Noto Serif Thai"	"NotoSerifThai-Bold"	TRUE	FALSE	FALSE	NA
+"382"	NA	"NotoSerifThai-Regular.afm.gz"	"/usr/share/fonts/truetype/noto/NotoSerifThai-Regular.ttf"	"Noto Serif Thai Regular"	"Noto Serif Thai"	"NotoSerifThai-Regular"	FALSE	FALSE	FALSE	NA
+"383"	NA	"OpenSans-Regular.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-Regular.ttf"	"Open Sans"	"Open Sans"	"OpenSans"	FALSE	FALSE	FALSE	NA
+"384"	NA	"OpenSans-Bold.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-Bold.ttf"	"Open Sans Bold"	"Open Sans"	"OpenSans-Bold"	TRUE	FALSE	FALSE	NA
+"385"	NA	"OpenSans-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-BoldItalic.ttf"	"Open Sans Bold Italic"	"Open Sans"	"OpenSans-BoldItalic"	TRUE	TRUE	FALSE	NA
+"386"	NA	"OpenSans-CondBold.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-CondBold.ttf"	"Open Sans Condensed Bold"	"Open Sans Condensed"	"OpenSans-CondensedBold"	TRUE	FALSE	FALSE	NA
+"387"	NA	"OpenSans-CondLight.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-CondLight.ttf"	"Open Sans Condensed Light"	"Open Sans Condensed Light"	"OpenSans-CondensedLight"	FALSE	FALSE	FALSE	NA
+"388"	NA	"OpenSans-CondLightItalic.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-CondLightItalic.ttf"	"Open Sans Condensed Light Italic"	"Open Sans Condensed Light"	"OpenSans-CondensedLightItalic"	FALSE	TRUE	FALSE	NA
+"389"	NA	"OpenSans-ExtraBold.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-ExtraBold.ttf"	"Open Sans Extrabold"	"Open Sans Extrabold"	"OpenSans-Extrabold"	FALSE	FALSE	FALSE	NA
+"390"	NA	"OpenSans-ExtraBoldItalic.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-ExtraBoldItalic.ttf"	"Open Sans Extrabold Italic"	"Open Sans Extrabold"	"OpenSans-ExtraboldItalic"	FALSE	TRUE	FALSE	NA
+"391"	NA	"OpenSans-Italic.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-Italic.ttf"	"Open Sans Italic"	"Open Sans"	"OpenSans-Italic"	FALSE	TRUE	FALSE	NA
+"392"	NA	"OpenSans-Light.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-Light.ttf"	"Open Sans Light"	"Open Sans Light"	"OpenSans-Light"	FALSE	FALSE	FALSE	NA
+"393"	NA	"OpenSans-LightItalic.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-LightItalic.ttf"	"Open Sans Light Italic"	"Open Sans Light"	"OpenSansLight-Italic"	FALSE	TRUE	FALSE	NA
+"394"	NA	"OpenSans-Semibold.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-Semibold.ttf"	"Open Sans Semibold"	"Open Sans Semibold"	"OpenSans-Semibold"	FALSE	FALSE	FALSE	NA
+"395"	NA	"OpenSans-SemiboldItalic.afm.gz"	"/usr/share/fonts/truetype/open-sans/OpenSans-SemiboldItalic.ttf"	"Open Sans Semibold Italic"	"Open Sans Semibold"	"OpenSans-SemiboldItalic"	FALSE	TRUE	FALSE	NA
+"396"	NA	"opens___.afm.gz"	"/usr/share/fonts/truetype/openoffice/opens___.ttf"	"OpenSymbol"	"OpenSymbol"	"OpenSymbol"	FALSE	FALSE	TRUE	NA
+"397"	NA	"Padauk-Bold.afm.gz"	"/usr/share/fonts/truetype/padauk/Padauk-Bold.ttf"	"Padauk Bold"	"Padauk"	"Padauk-Bold"	TRUE	FALSE	FALSE	NA
+"398"	NA	"PadaukBook-Bold.afm.gz"	"/usr/share/fonts/truetype/padauk/PadaukBook-Bold.ttf"	"Padauk Book Bold"	"Padauk Book"	"PadaukBook-Bold"	TRUE	FALSE	FALSE	NA
+"399"	NA	"PadaukBook-Regular.afm.gz"	"/usr/share/fonts/truetype/padauk/PadaukBook-Regular.ttf"	"Padauk Book"	"Padauk Book"	"PadaukBook-Regular"	FALSE	FALSE	FALSE	NA
+"400"	NA	"Padauk-Regular.afm.gz"	"/usr/share/fonts/truetype/padauk/Padauk-Regular.ttf"	"Padauk"	"Padauk"	"Padauk-Regular"	FALSE	FALSE	FALSE	NA
+"401"	NA	"padmaa.afm.gz"	"/usr/share/fonts/truetype/fonts-gujr-extra/padmaa.ttf"	"padmaa"	"padmaa"	"padmaa"	FALSE	FALSE	FALSE	NA
+"402"	NA	"padmaa-Bold.1.1.afm.gz"	"/usr/share/fonts/truetype/fonts-gujr-extra/padmaa-Bold.1.1.ttf"	"padmaa-Bold.1.1"	"padmaa-Bold.1.1"	"padmaa-Bold-1-1"	TRUE	FALSE	FALSE	NA
+"403"	NA	"padmaa-Medium-0.5.afm.gz"	"/usr/share/fonts/truetype/fonts-gujr-extra/padmaa-Medium-0.5.ttf"	"padmaa-medium"	"padmaa"	"padmaa-Medium"	FALSE	FALSE	FALSE	NA
+"404"	NA	"Pagul.afm.gz"	"/usr/share/fonts/truetype/pagul/Pagul.ttf"	"Pagul"	"Pagul"	"Pagul"	FALSE	FALSE	FALSE	NA
+"405"	NA	"Phetsarath_OT.afm.gz"	"/usr/share/fonts/truetype/lao/Phetsarath_OT.ttf"	"Phetsarath OT"	"Phetsarath OT"	"Phetsarath-OT-Modified-28-04-14-"	FALSE	FALSE	FALSE	NA
+"406"	NA	"Pothana2000.afm.gz"	"/usr/share/fonts/truetype/fonts-telu-extra/Pothana2000.ttf"	"Pothana2000"	"Pothana2000"	"Pothana2000"	FALSE	FALSE	FALSE	NA
+"407"	NA	"Purisa.afm.gz"	"/usr/share/fonts/truetype/tlwg/Purisa.ttf"	"Purisa"	"Purisa"	"Purisa"	FALSE	FALSE	FALSE	NA
+"408"	NA	"Purisa-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Purisa-Bold.ttf"	"Purisa Bold"	"Purisa"	"Purisa-Bold"	TRUE	FALSE	FALSE	NA
+"409"	NA	"Purisa-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Purisa-BoldOblique.ttf"	"Purisa Bold Oblique"	"Purisa"	"Purisa-BoldOblique"	TRUE	TRUE	FALSE	NA
+"410"	NA	"Purisa-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Purisa-Oblique.ttf"	"Purisa Oblique"	"Purisa"	"Purisa-Oblique"	FALSE	TRUE	FALSE	NA
+"411"	NA	"Rachana-Bold.afm.gz"	"/usr/share/fonts/truetype/malayalam/Rachana-Bold.ttf"	"Rachana Bold"	"Rachana"	"Rachana-Bold"	TRUE	FALSE	FALSE	NA
+"412"	NA	"Rachana-Regular.afm.gz"	"/usr/share/fonts/truetype/malayalam/Rachana-Regular.ttf"	"Rachana Regular"	"Rachana"	"Rachana-Regular"	FALSE	FALSE	FALSE	NA
+"413"	NA	"RaghuMalayalamSans-Regular.afm.gz"	"/usr/share/fonts/truetype/malayalam/RaghuMalayalamSans-Regular.ttf"	"RaghuMalayalam Regular"	"RaghuMalayalam"	"RaghuMalayalamSans-Regular"	FALSE	FALSE	FALSE	NA
+"414"	NA	"Rekha.afm.gz"	"/usr/share/fonts/truetype/fonts-gujr-extra/Rekha.ttf"	"Rekha"	"Rekha"	"Rekha"	FALSE	FALSE	FALSE	NA
+"415"	NA	"Roboto-Black.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Black.ttf"	"Roboto Black"	"Roboto"	"Roboto-Black"	FALSE	FALSE	FALSE	NA
+"416"	NA	"Roboto-BlackItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-BlackItalic.ttf"	"Roboto Black Italic"	"Roboto"	"Roboto-BlackItalic"	FALSE	TRUE	FALSE	NA
+"417"	NA	"Roboto-Bold.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Bold.ttf"	"Roboto Bold"	"Roboto"	"Roboto-Bold"	TRUE	FALSE	FALSE	NA
+"418"	NA	"Roboto-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-BoldItalic.ttf"	"Roboto Bold Italic"	"Roboto"	"Roboto-BoldItalic"	TRUE	TRUE	FALSE	NA
+"419"	NA	"RobotoCondensed-Bold.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-Bold.ttf"	"Roboto Condensed Bold"	"Roboto Condensed"	"RobotoCondensed-Bold"	TRUE	FALSE	FALSE	NA
+"420"	NA	"RobotoCondensed-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-BoldItalic.ttf"	"Roboto Condensed Bold Italic"	"Roboto Condensed"	"RobotoCondensed-BoldItalic"	TRUE	TRUE	FALSE	NA
+"421"	NA	"RobotoCondensed-Italic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-Italic.ttf"	"Roboto Condensed Italic"	"Roboto Condensed"	"RobotoCondensed-Italic"	FALSE	TRUE	FALSE	NA
+"422"	NA	"RobotoCondensed-Light.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-Light.ttf"	"Roboto Condensed Light"	"Roboto Condensed"	"RobotoCondensed-Light"	FALSE	FALSE	FALSE	NA
+"423"	NA	"RobotoCondensed-LightItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-LightItalic.ttf"	"Roboto Condensed Light Italic"	"Roboto Condensed"	"RobotoCondensed-LightItalic"	FALSE	TRUE	FALSE	NA
+"424"	NA	"RobotoCondensed-Regular.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/RobotoCondensed-Regular.ttf"	"Roboto Condensed Regular"	"Roboto Condensed"	"RobotoCondensed-Regular"	FALSE	FALSE	FALSE	NA
+"425"	NA	"Roboto-Italic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Italic.ttf"	"Roboto Italic"	"Roboto"	"Roboto-Italic"	FALSE	TRUE	FALSE	NA
+"426"	NA	"Roboto-Light.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Light.ttf"	"Roboto Light"	"Roboto"	"Roboto-Light"	FALSE	FALSE	FALSE	NA
+"427"	NA	"Roboto-LightItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-LightItalic.ttf"	"Roboto Light Italic"	"Roboto"	"Roboto-LightItalic"	FALSE	TRUE	FALSE	NA
+"428"	NA	"Roboto-Medium.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Medium.ttf"	"Roboto Medium"	"Roboto"	"Roboto-Medium"	FALSE	FALSE	FALSE	NA
+"429"	NA	"Roboto-MediumItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-MediumItalic.ttf"	"Roboto Medium Italic"	"Roboto"	"Roboto-MediumItalic"	FALSE	TRUE	FALSE	NA
+"430"	NA	"Roboto-Regular.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Regular.ttf"	"Roboto Regular"	"Roboto"	"Roboto-Regular"	FALSE	FALSE	FALSE	NA
+"431"	NA	"Roboto-Thin.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-Thin.ttf"	"Roboto Thin"	"Roboto"	"Roboto-Thin"	FALSE	FALSE	FALSE	NA
+"432"	NA	"Roboto-ThinItalic.afm.gz"	"/usr/share/fonts/truetype/roboto/hinted/Roboto-ThinItalic.ttf"	"Roboto Thin Italic"	"Roboto"	"Roboto-ThinItalic"	FALSE	TRUE	FALSE	NA
+"433"	NA	"Saab.afm.gz"	"/usr/share/fonts/truetype/fonts-guru-extra/Saab.ttf"	"Saab"	"Saab"	"Saab"	FALSE	FALSE	FALSE	NA
+"434"	NA	"sahadeva.afm.gz"	"/usr/share/fonts/truetype/Sahadeva/sahadeva.ttf"	"Sahadeva"	"Sahadeva"	"Sahadeva"	FALSE	FALSE	FALSE	NA
+"435"	NA	"samanata.afm.gz"	"/usr/share/fonts/truetype/fonts-deva-extra/samanata.ttf"	"Samanata"	"Samanata"	"Samanata"	FALSE	FALSE	FALSE	NA
+"436"	NA	"Samyak-Devanagari.afm.gz"	"/usr/share/fonts/truetype/samyak/Samyak-Devanagari.ttf"	"Samyak Devanagari"	"Samyak Devanagari"	"Samyak-Devanagari"	FALSE	FALSE	FALSE	NA
+"437"	NA	"Samyak-Gujarati.afm.gz"	"/usr/share/fonts/truetype/samyak-fonts/Samyak-Gujarati.ttf"	"Samyak Gujarati"	"Samyak Gujarati"	"Samyak-Gujarati"	FALSE	FALSE	FALSE	NA
+"438"	NA	"Samyak-Malayalam.afm.gz"	"/usr/share/fonts/truetype/samyak-fonts/Samyak-Malayalam.ttf"	"Samyak Malayalam"	"Samyak Malayalam"	"Samyak-Malayalam"	FALSE	FALSE	FALSE	NA
+"439"	NA	"Samyak-Tamil.afm.gz"	"/usr/share/fonts/truetype/samyak-fonts/Samyak-Tamil.ttf"	"Samyak Tamil"	"Samyak Tamil"	"Samyak-Tamil"	FALSE	FALSE	FALSE	NA
+"440"	NA	"Sarai.afm.gz"	"/usr/share/fonts/truetype/Sarai/Sarai.ttf"	"Sarai"	"Sarai"	"Sarai"	FALSE	FALSE	FALSE	NA
+"441"	NA	"Sawasdee.afm.gz"	"/usr/share/fonts/truetype/tlwg/Sawasdee.ttf"	"Sawasdee"	"Sawasdee"	"Sawasdee"	FALSE	FALSE	FALSE	NA
+"442"	NA	"Sawasdee-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Sawasdee-Bold.ttf"	"Sawasdee Bold"	"Sawasdee"	"Sawasdee-Bold"	TRUE	FALSE	FALSE	NA
+"443"	NA	"Sawasdee-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Sawasdee-BoldOblique.ttf"	"Sawasdee Bold Oblique"	"Sawasdee"	"Sawasdee-BoldOblique"	TRUE	TRUE	FALSE	NA
+"444"	NA	"Sawasdee-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Sawasdee-Oblique.ttf"	"Sawasdee Oblique"	"Sawasdee"	"Sawasdee-Oblique"	FALSE	TRUE	FALSE	NA
+"445"	NA	"Suruma.afm.gz"	"/usr/share/fonts/truetype/malayalam/Suruma.ttf"	"Suruma"	"Suruma"	"Suruma"	FALSE	FALSE	FALSE	NA
+"446"	NA	"TibetanMachineUni.afm.gz"	"/usr/share/fonts/truetype/tibetan-machine/TibetanMachineUni.ttf"	"Tibetan_Machine_Uni"	"Tibetan Machine Uni"	"Tibetan-Machine-Uni"	FALSE	FALSE	FALSE	NA
+"447"	NA	"Tinos-Regular.afm.gz"	"/usr/share/fonts/truetype/croscore/Tinos-Regular.ttf"	"Tinos"	"Tinos"	"Tinos"	FALSE	FALSE	FALSE	NA
+"448"	NA	"Tinos-Bold.afm.gz"	"/usr/share/fonts/truetype/croscore/Tinos-Bold.ttf"	"Tinos Bold"	"Tinos"	"Tinos-Bold"	TRUE	FALSE	FALSE	NA
+"449"	NA	"Tinos-BoldItalic.afm.gz"	"/usr/share/fonts/truetype/croscore/Tinos-BoldItalic.ttf"	"Tinos Bold Italic"	"Tinos"	"Tinos-BoldItalic"	TRUE	TRUE	FALSE	NA
+"450"	NA	"Tinos-Italic.afm.gz"	"/usr/share/fonts/truetype/croscore/Tinos-Italic.ttf"	"Tinos Italic"	"Tinos"	"Tinos-Italic"	FALSE	TRUE	FALSE	NA
+"451"	NA	"TlwgMono.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgMono.ttf"	"Tlwg Mono"	"TlwgMono"	"TlwgMono"	FALSE	FALSE	FALSE	NA
+"452"	NA	"TlwgMono-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgMono-Bold.ttf"	"Tlwg Mono Bold"	"TlwgMono"	"TlwgMono-Bold"	TRUE	FALSE	FALSE	NA
+"453"	NA	"TlwgMono-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgMono-BoldOblique.ttf"	"Tlwg Mono Bold Oblique"	"TlwgMono"	"TlwgMono-BoldOblique"	TRUE	TRUE	FALSE	NA
+"454"	NA	"TlwgMono-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgMono-Oblique.ttf"	"Tlwg Mono Oblique"	"TlwgMono"	"TlwgMono-Oblique"	FALSE	TRUE	FALSE	NA
+"455"	NA	"TlwgTypewriter.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypewriter.ttf"	"Tlwg Typewriter"	"TlwgTypewriter"	"TlwgTypewriter"	FALSE	FALSE	FALSE	NA
+"456"	NA	"TlwgTypewriter-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypewriter-Bold.ttf"	"Tlwg Typewriter Bold"	"TlwgTypewriter"	"TlwgTypewriter-Bold"	TRUE	FALSE	FALSE	NA
+"457"	NA	"TlwgTypewriter-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypewriter-BoldOblique.ttf"	"Tlwg Typewriter Bold Oblique"	"TlwgTypewriter"	"TlwgTypewriter-BoldOblique"	TRUE	TRUE	FALSE	NA
+"458"	NA	"TlwgTypewriter-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypewriter-Oblique.ttf"	"Tlwg Typewriter Oblique"	"TlwgTypewriter"	"TlwgTypewriter-Oblique"	FALSE	TRUE	FALSE	NA
+"459"	NA	"TlwgTypist.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypist.ttf"	"Tlwg Typist"	"Tlwg Typist"	"TlwgTypist"	FALSE	FALSE	FALSE	NA
+"460"	NA	"TlwgTypist-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypist-Bold.ttf"	"Tlwg Typist Bold"	"Tlwg Typist"	"TlwgTypist-Bold"	TRUE	FALSE	FALSE	NA
+"461"	NA	"TlwgTypist-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypist-BoldOblique.ttf"	"Tlwg Typist Bold Oblique"	"Tlwg Typist"	"TlwgTypist-BoldOblique"	TRUE	TRUE	FALSE	NA
+"462"	NA	"TlwgTypist-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypist-Oblique.ttf"	"Tlwg Typist Oblique"	"Tlwg Typist"	"TlwgTypist-Oblique"	FALSE	TRUE	FALSE	NA
+"463"	NA	"TlwgTypo.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypo.ttf"	"Tlwg Typo"	"Tlwg Typo"	"TlwgTypo"	FALSE	FALSE	FALSE	NA
+"464"	NA	"TlwgTypo-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf"	"Tlwg Typo Bold"	"Tlwg Typo"	"TlwgTypo-Bold"	TRUE	FALSE	FALSE	NA
+"465"	NA	"TlwgTypo-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypo-BoldOblique.ttf"	"Tlwg Typo Bold Oblique"	"Tlwg Typo"	"TlwgTypo-BoldOblique"	TRUE	TRUE	FALSE	NA
+"466"	NA	"TlwgTypo-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/TlwgTypo-Oblique.ttf"	"Tlwg Typo Oblique"	"Tlwg Typo"	"TlwgTypo-Oblique"	FALSE	TRUE	FALSE	NA
+"467"	NA	"Ubuntu-R.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf"	"Ubuntu"	"Ubuntu"	"Ubuntu"	FALSE	FALSE	FALSE	NA
+"468"	NA	"Ubuntu-B.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf"	"Ubuntu Bold"	"Ubuntu"	"Ubuntu-Bold"	TRUE	FALSE	FALSE	NA
+"469"	NA	"Ubuntu-BI.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-BI.ttf"	"Ubuntu Bold Italic"	"Ubuntu"	"Ubuntu-BoldItalic"	TRUE	TRUE	FALSE	NA
+"470"	NA	"Ubuntu-C.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-C.ttf"	"Ubuntu Condensed"	"Ubuntu Condensed"	"UbuntuCondensed-Regular"	FALSE	FALSE	FALSE	NA
+"471"	NA	"Ubuntu-RI.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf"	"Ubuntu Italic"	"Ubuntu"	"Ubuntu-Italic"	FALSE	TRUE	FALSE	NA
+"472"	NA	"Ubuntu-L.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-L.ttf"	"Ubuntu Light"	"Ubuntu Light"	"Ubuntu-Light"	FALSE	FALSE	FALSE	NA
+"473"	NA	"Ubuntu-LI.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-LI.ttf"	"Ubuntu Light Italic"	"Ubuntu Light"	"Ubuntu-LightItalic"	FALSE	TRUE	FALSE	NA
+"474"	NA	"Ubuntu-M.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-M.ttf"	"Ubuntu Medium"	"Ubuntu Light"	"Ubuntu-Medium"	TRUE	FALSE	FALSE	NA
+"475"	NA	"Ubuntu-MI.afm.gz"	"/usr/share/fonts/truetype/ubuntu/Ubuntu-MI.ttf"	"Ubuntu Medium Italic"	"Ubuntu Light"	"Ubuntu-MediumItalic"	TRUE	TRUE	FALSE	NA
+"476"	NA	"UbuntuMono-B.afm.gz"	"/usr/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf"	"Ubuntu Mono Bold"	"Ubuntu Mono"	"UbuntuMono-Bold"	TRUE	FALSE	FALSE	NA
+"477"	NA	"UbuntuMono-BI.afm.gz"	"/usr/share/fonts/truetype/ubuntu/UbuntuMono-BI.ttf"	"Ubuntu Mono Bold Italic"	"Ubuntu Mono"	"UbuntuMono-BoldItalic"	TRUE	TRUE	FALSE	NA
+"478"	NA	"UbuntuMono-RI.afm.gz"	"/usr/share/fonts/truetype/ubuntu/UbuntuMono-RI.ttf"	"Ubuntu Mono Italic"	"Ubuntu Mono"	"UbuntuMono-Italic"	FALSE	TRUE	FALSE	NA
+"479"	NA	"UbuntuMono-R.afm.gz"	"/usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf"	"Ubuntu Mono"	"Ubuntu Mono"	"UbuntuMono-Regular"	FALSE	FALSE	FALSE	NA
+"480"	NA	"Umpush.afm.gz"	"/usr/share/fonts/truetype/tlwg/Umpush.ttf"	"Umpush"	"Umpush"	"Umpush"	FALSE	FALSE	FALSE	NA
+"481"	NA	"Umpush-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Umpush-Bold.ttf"	"Umpush Bold"	"Umpush"	"Umpush-Bold"	TRUE	FALSE	FALSE	NA
+"482"	NA	"Umpush-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Umpush-BoldOblique.ttf"	"Umpush Bold Oblique"	"Umpush"	"Umpush-BoldOblique"	TRUE	TRUE	FALSE	NA
+"483"	NA	"Umpush-Light.afm.gz"	"/usr/share/fonts/truetype/tlwg/Umpush-Light.ttf"	"Umpush Light"	"Umpush"	"Umpush-Light"	FALSE	FALSE	FALSE	NA
+"484"	NA	"Umpush-LightOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Umpush-LightOblique.ttf"	"Umpush Light Oblique"	"Umpush"	"Umpush-LightOblique"	FALSE	TRUE	FALSE	NA
+"485"	NA	"Umpush-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Umpush-Oblique.ttf"	"Umpush Oblique"	"Umpush"	"Umpush-Oblique"	FALSE	TRUE	FALSE	NA
+"486"	NA	"Uroob.afm.gz"	"/usr/share/fonts/truetype/malayalam/Uroob.ttf"	"Uroob"	"Uroob"	"Uroob"	TRUE	FALSE	FALSE	NA
+"487"	NA	"utkal.afm.gz"	"/usr/share/fonts/truetype/fonts-orya-extra/utkal.ttf"	"utkal medium"	"utkal"	"utkal"	FALSE	FALSE	FALSE	NA
+"488"	NA	"vemana2000.afm.gz"	"/usr/share/fonts/truetype/fonts-telu-extra/vemana2000.ttf"	"Vemana2000"	"Vemana2000"	"Vemana2000"	FALSE	FALSE	FALSE	NA
+"489"	NA	"Waree.afm.gz"	"/usr/share/fonts/truetype/tlwg/Waree.ttf"	"Waree"	"Waree"	"Waree"	FALSE	FALSE	FALSE	NA
+"490"	NA	"Waree-Bold.afm.gz"	"/usr/share/fonts/truetype/tlwg/Waree-Bold.ttf"	"Waree Bold"	"Waree"	"Waree-Bold"	TRUE	FALSE	FALSE	NA
+"491"	NA	"Waree-BoldOblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Waree-BoldOblique.ttf"	"Waree Bold Oblique"	"Waree"	"Waree-BoldOblique"	TRUE	TRUE	FALSE	NA
+"492"	NA	"Waree-Oblique.afm.gz"	"/usr/share/fonts/truetype/tlwg/Waree-Oblique.ttf"	"Waree Oblique"	"Waree"	"Waree-Oblique"	FALSE	TRUE	FALSE	NA

@@ -1,0 +1,506 @@
+
+# Survival Plots
+
+To study the impact of alternative splicing events on prognosis, Kaplan-Meier curves may be plotted for groups of patients separated by a given PSI cutoff for a given alternative splicing event. The optimal PSI cutoff maximises the significance of group differences in survival analysis (i.e. minimises the p-value of the log-rank tests of difference in survival between individuals whose samples have a PSI below and above that threshold). 
+
+## (1st strategy)  **optimalSurvivalCutoff**
+We estimate optimo PSI using **psichomics optimalSurvivalCutoff** function. According to this function, **PSI =  50.83** is the value that best divide patients. We then defined:
+  
+  * g0: PSI < 50.83: 396 
+* g1: PSI > 50.83: 87  
+
+Total number of cases: 483
+
+```{r clinical0, echo = FALSE, message=FALSE, warning=FALSE}
+#aca computamos el optimo sin remover NAs
+clinical0<-data.frame(finalV$days_to_last_follow, 
+                      finalV$days_to_death,
+                      finalV$stage,
+                      finalV$gender)
+names(clinical0) <- c("patient.days_to_last_followup", 
+                      "patient.days_to_death",
+                      "patient.stage_event.pathologic_stage",
+                      "patient.gender")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(finalV$psi)
+opt <- optimalSurvivalCutoff(clinical0, 
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)
+# Optimal exon inclusion level 69.40
+(optimalPvalue <- opt$value)  # Respective p-value 0.00751
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinical0, censoring="right",
+                              event="days_to_death", 
+                              timeStart="days_to_death",
+                              group=label, scale="years")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+
+
+
+
+```{r makeNotNAs, message=FALSE, warning=FALSE,  echo=FALSE}
+survival<-finalV
+#OS ##########################################################
+NAs<-
+  data.frame(survival$days_to_death,
+             survival$days_to_last_followup,
+             survival$days_to_last_known_alive);
+SUMNAS<-rowSums(apply(NAs, 2,is.na) ); length(SUMNAS); survivalNotNas<-survival[SUMNAS!=3,]
+survivalNotNas$days_to_death[is.na(survivalNotNas$days_to_death)]<-0
+survivalNotNas$days_to_last_followup[is.na(survivalNotNas$days_to_last_followup)]<-0
+survivalNotNas$days_to_last_known_alive[is.na(survivalNotNas$days_to_last_known_alive)]<-0
+#
+survivalNotNas$daysOS<-
+  unlist(apply(data.frame(survivalNotNas$days_to_death,
+                          survivalNotNas$days_to_last_followup,                      survivalNotNas$days_to_last_known_alive),
+               1,max));
+#RFS #########################################################
+daysRFSDF<-
+  data.frame(
+    survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)
+###################################################
+SUMNASRFS<-rowSums(apply(daysRFSDF, 2,is.na));
+survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment[
+  is.na(survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment)]<-0
+survivalNotNas$daysRFS<-
+  unlist(apply(data.frame(
+    survivalNotNas$follow_ups.follow_up.2.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.3.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.4.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$follow_ups.follow_up.days_to_new_tumor_event_after_initial_treatment,
+    survivalNotNas$new_tumor_events.new_tumor_event.days_to_new_tumor_event_after_initial_treatment),
+    1,max))
+#############################################
+df<-data.frame(survivalNotNas$daysRFS,SUMNASRFS) 
+survivalNotNas$status[survivalNotNas$days_to_death==0]<-0
+#############################################
+# Be careful here is the definition
+# days are defined as RFS days
+survivalNotNas$days<-survivalNotNas$daysRFS
+survivalNotNas$days[survivalNotNas$daysRFS==0]<-
+  survivalNotNas$daysOS[survivalNotNas$daysRFS==0]
+#########################################################
+#optimo
+survivalNotNas$group<-rep("g0", nrow(survivalNotNas))
+survivalNotNas$group[survivalNotNas$psi>50.83]<-"g1"
+#########################################################
+#here is OS
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalNotNas)
+#########################################################
+#sum(is.infinite(survivalNotNas$daysOS))#check
+##################################
+```
+
+### OS and RF Survival plots using optimo PSI (according psichomics: 50.83)
+Overall Survival (OS) 
+The event call is derived from "vital status" parameter. 
+The time_to_event is in days, equals to days_to_death if patient deceased.
+In the case of a patient is still living, the time variable is the maximum(days_to_last_known_alive, days_to_last_followup).  This pair of clinical parameters are called _EVENT and _TIME_TO_EVENT on the cancer browser. 
+
+In our case, we use these columns:
+  + days_to_death, 
++ days_to_last_followup,
++ days_to_last_known_alive
+
+* Recurrence Free Survival (RFS)
+The event call is derived from "new_tumor_event_after_initial_treatment" parameter. The time_to_event is in days, equals to max (days_to_new_tumor_event_after_initial_treatment, days_to_tumor_recurrence)  if there is an event. In the case of no event, the time variable is time of overall survival. The pair of clinical parameters are called _RFS and _RFS_IND on the cancer browser. 
+
+Source: <https://groups.google.com/forum/#!topic/ucsc-cancer-genomics-browser/YvKnWZSsw1Q>
+  
+  
+  ```{r makeNotNAs2, message=FALSE, warning=FALSE}
+title<-paste("Overall Surv. PSI 50.83")
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r firNotNas, echo = FALSE, message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group, 
+               data = survivalNotNas)
+title<-paste("Rec Free Surv PSI 50.83")
+
+ggsurvplot(fit, 
+           data = survivalNotNas,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Compute optimo PSI inside G0 (psi  <  50.83) 
+
+```{r optG0, echo = FALSE, message=FALSE, warning=FALSE}
+clinicalTumor<-data.frame(days_to_last_follow=finalV$days_to_last_follow, 
+                          days_to_death=finalV$days_to_death,
+                          stage=finalV$stage,
+                          gender=finalV$gender,
+                          psi=finalV$psi)
+clinicalTumor<-clinicalTumor[clinicalTumor$psi<50.83,]
+names(clinicalTumor) <- c("patient.days_to_last_followup", 
+                          "patient.days_to_death",
+                          "patient.stage_event.pathologic_stage",
+                          "patient.gender",
+                          "psi")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(clinicalTumor$psi)
+opt <- optimalSurvivalCutoff(clinicalTumor,
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)    # Optimal exon inclusion level 50.83
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinicalTumor, censoring="right",
+                              event="days_to_death", timeStart="days_to_death",
+                              group=label, scale="months")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+
+#### OS and RFS in  G0 using optimo psi 15.93
+
+```{r optG0OS, echo = FALSE, message=FALSE, warning=FALSE}
+survivalLow<-survivalNotNas[survivalNotNas$group=="g0",]
+survivalLow$group<-rep("g0", nrow(survivalLow))
+survivalLow$group[survivalLow$psi>15.93]<-"g1"
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalLow)
+title<-paste("OS PSI 15.93  (optimal psi inside g0 Low)")
+ggsurvplot(fit, 
+           data = survivalLow,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r optG0RFS, echo = FALSE,message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group,  
+               data = survivalLow)
+title<-paste("RFS PSI 15.93  (optimal psi inside g0 Low)")
+ggsurvplot(fit, 
+           data = survivalLow,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Compute optimo PSI inside G1 (psi >50.83) 
+
+```{r optG1, echo = FALSE, message=FALSE, warning=FALSE}
+clinicalTumor<-data.frame(days_to_last_follow=finalV$days_to_last_follow, 
+                          days_to_death=finalV$days_to_death,
+                          stage=finalV$stage,
+                          gender=finalV$gender,
+                          psi=finalV$psi)
+clinicalTumor<-clinicalTumor[clinicalTumor$psi>=50.83,]
+names(clinicalTumor) <- c("patient.days_to_last_followup", 
+                          "patient.days_to_death",
+                          "patient.stage_event.pathologic_stage",
+                          "patient.gender",
+                          "psi")
+timeStart  <- "days_to_death"
+event      <- "days_to_death"
+psi<-as.numeric(clinicalTumor$psi)
+opt <- optimalSurvivalCutoff(clinicalTumor,
+                             psi, censoring="right", 
+                             event="days_to_death", 
+                             timeStart="days_to_death")
+(optimalCutoff <- opt$par)    # 
+(optimalPvalue <- opt$value)  # 
+label     <- labelBasedOnCutoff(psi, round(optimalCutoff, 2), 
+                                label="PSI values")
+survTerms <- processSurvTerms(clinicalTumor, censoring="right",
+                              event="days_to_death", timeStart="days_to_death",
+                              group=label, scale="months")
+surv <- survfit(survTerms)
+pvalue <- testSurvival(survTerms)
+plotSurvivalCurves(surv, pvalue=pvalue, mark=FALSE)
+```
+
+#### OS and RFS in  G1 using optimo psi 64.11
+
+```{r optG1OS, echo = FALSE, message=FALSE, warning=FALSE}
+survivalHigh<-survivalNotNas[survivalNotNas$group=="g1",]
+survivalHigh$group<-rep("g0", nrow(survivalHigh))
+survivalHigh$group[survivalHigh$psi>64.11]<-"g1"
+fit <- survfit(Surv(daysOS/30, status) ~ group,  
+               data = survivalHigh)
+title<-paste("OS PSI 64.11  (optimal psi inside g1 high)")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r optG1RFS, echo = FALSE,message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group,  
+               data = survivalHigh)
+title<-paste("RFS PSI 64.11  (optimal psi inside g1 high)")
+ggsurvplot(fit, 
+           data = survivalHigh,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+## (2nd strategy) Scan pvalue across PSI values (whole dataset)
+
+```{r FindOptimalPSI, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI<-survivalNotNas
+df<-data.frame(matrix(NA, 
+                      ncol=2, 
+                      nrow= length(seq(min(survPSI$psi),max(survPSI$psi), by=0.05))))
+colnames(df)<-c("psi","pval")
+values<-seq(min(survPSI$psi),
+            max(survPSI$psi), by=0.05)
+
+for (i in 1:length(values) ){
+  df[i,1]<-values[i]
+  psi=values[i]
+  survPSI$group<-rep("g0", nrow(survPSI))
+  survPSI$group[survPSI$psi>psi]<-"g1"
+  fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+  pval<-surv_pvalue(fit, data = NULL, method = "survdiff",
+                    test.for.trend = FALSE, combine = FALSE)[2]
+  df[i,2]<-pval
+}
+title<-paste(cancertype, "PSI OPTIMO",df[which.min(df$pval),1], "pval", round(df[which.min(df$pval),2], digits = 4))
+ggplot(data=df, 
+       aes(x=psi, y=pval, group=1)) + 
+  geom_line(colour="grey")+
+  theme_bw()+
+  ggtitle(title)+
+  geom_hline(yintercept=range(0.05, 0.1), color='coral',       size=0.5)
+```
+
+### OS and RFS plots **whole dataset** using optimo PSI (18.28)
+
+```{r FindOptimalPSIb, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI$group<-rep("g0", nrow(survPSI))
+survPSI$group[survPSI$psi>=18.28]<-"g1"
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo 18.28 PSI OS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r FindOptimalPSIbRFS, echo = FALSE,message=FALSE, warning=FALSE}
+fit <- survfit(Surv(days/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo 18.28 PSI RFS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Scan for optimal in G0 (psi <18.28)
+
+```{r FindOptimalPSIe, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI<-survivalNotNas[survivalNotNas$psi<=18.28,]
+df<-data.frame(matrix(NA, 
+                      ncol=2, 
+                      nrow= length(seq(min(survPSI$psi),max(survPSI$psi), by=0.05))))
+colnames(df)<-c("psi","pval")
+values<-seq(min(survPSI$psi),max(survPSI$psi), by=0.05)
+
+for (i in 1:length(values) ){
+  df[i,1]<-values[i]
+  psi=values[i]
+  survPSI$group<-rep("g0", nrow(survPSI))
+  survPSI$group[survPSI$psi>psi]<-"g1"
+  fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+  pval<-surv_pvalue(fit, data = NULL, method = "survdiff",
+                    test.for.trend = FALSE, combine = FALSE)[2]
+  df[i,2]<-pval
+}
+
+title<-paste(cancertype, "PSI OPTIMO G0",df[which.min(df$pval),1], "pval", round(df[which.min(df$pval),2], digits = 4))
+
+ggplot(data=df, 
+       aes(x=psi, y=pval, group=1)) + 
+  geom_line(colour="grey")+
+  theme_bw()+
+  ggtitle(title)+
+  geom_hline(yintercept=range(0.05, 0.1), color='coral',       size=0.5)
+```
+
+```{r FindOptimalPSIf, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI$group<-rep("g0", nrow(survPSI))
+survPSI$group[survPSI$psi>=11.88]<-"g1"
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G0 11.88 PSI OS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+```{r FindOptimalPSIfRFS, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G0 11.88 PSI RFS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
+### Scan for optimal in G1 (psi >18.28)
+
+```{r FindOptimalPSIeG1, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI<-survivalNotNas[survivalNotNas$psi>=18.28,]
+df<-data.frame(matrix(NA, 
+                      ncol=2, 
+                      nrow= length(seq(min(survPSI$psi),max(survPSI$psi), by=0.05))))
+colnames(df)<-c("psi","pval")
+values<-seq(min(survPSI$psi),max(survPSI$psi), by=0.05)
+
+for (i in 1:length(values) ){
+  df[i,1]<-values[i]
+  psi=values[i]
+  survPSI$group<-rep("g0", nrow(survPSI))
+  survPSI$group[survPSI$psi>psi]<-"g1"
+  fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+  pval<-surv_pvalue(fit, data = NULL, method = "survdiff",
+                    test.for.trend = FALSE, combine = FALSE)[2]
+  df[i,2]<-pval
+}
+
+title<-paste(cancertype, "PSI OPTIMO G1",df[which.min(df$pval),1], "pval", round(df[which.min(df$pval),2], digits = 4))
+
+ggplot(data=df, 
+       aes(x=psi, y=pval, group=1)) + 
+  geom_line(colour="grey")+
+  theme_bw()+
+  ggtitle(title)+
+  geom_hline(yintercept=range(0.05, 0.1), color='coral',       size=0.5)
+```
+
+```{r FindOptimalPSIfG1, echo = FALSE,message=FALSE, warning=FALSE}
+survPSI$group<-rep("g0", nrow(survPSI))
+survPSI$group[survPSI$psi>=21.15]<-"g1"
+################################################################
+fit <- survfit(Surv(daysOS/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G1 21.15 PSI OS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+```{r FindOptimalPSIRFSG1, echo = FALSE,message=FALSE, warning=FALSE}
+################################################################
+fit <- survfit(Surv(days/30, status) ~ group,  data = survPSI)
+title<-paste("Optimo G1 21.15 PSI RFS")
+ggsurvplot(fit, 
+           data = survPSI,
+           conf.int = F,
+           pval = TRUE,
+           fun = "pct",
+           risk.table = TRUE,
+           size = 1,
+           palette = c("skyblue","tomato"),
+           legend = "right",
+           legend.labs = c("g0","g1"),
+           title=title)
+```
+
