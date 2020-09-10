@@ -27,6 +27,11 @@ library(survminer)
 library(ggfortify)
 library(psichomics)
 library(xtable)
+library(corrplot)
+library(caret)
+library(e1071)
+library(tree)
+library(randomForest)
 ```
 
 # Introduction
@@ -972,12 +977,68 @@ cor(smoking$psi, smoking$number_pack_years_smoked)
 lm(smoking$psi ~ smoking$number_pack_years_smoked)
 ```
 
+### Age:
+
+```{r age, echo = TRUE, message=FALSE, warning=FALSE}
+#cor(finalV$psi, finalV$age_at_initial_pathologic_diagnosis)
+lm(finalV$psi ~ finalV$age_at_initial_pathologic_diagnosis)
+#colnames(finalV)
+```
+
 
 ## Our variables more interesting are:
 
-* outcome (predictor): 0 (die) or 1 (alive)
-  + Variables: gender, aggStage, PSI
+* outcome (predictor): 0 (dead) or 1 (alive)
+  + Variables: gender, age (age_at_initial_pathologic_diagnosis), stage, aggStage, PSI, smoker (number pack years smoked), 
   
 * Discarded: 
   + mutations
+  + treatment succes
   
+```{r MLInputDF, echo = TRUE, message=FALSE, warning=FALSE}
+MLdf<- data.frame(
+    finalV$vital_status, #esta es la variable respuesta    
+    finalV$gender,
+    finalV$psi, 
+    finalV$age_at_initial_pathologic_diagnosis,
+    finalV$number_pack_years_smoked,
+    finalV$aggStage)
+head(MLdf)
+colnames(MLdf)<-gsub("finalV.", "", colnames(MLdf))
+MLdf$vital_status[MLdf$vital_status=="dead"]<-0
+MLdf$vital_status[MLdf$vital_status=="alive"]<-1
+#apply(MLdf, 2, summary)
+#removemos NAS y vemos cuantas rows quedan sin NAs:
+#solo dejemos los numericos, sin NA:
+clean<-MLdf[,c("vital_status",
+               "psi",
+              "age_at_initial_pathologic_diagnosis",
+              "number_pack_years_smoked")]
+#head(clean)
+notNAs<-clean[rowSums(is.na(clean))==0,]
+notNAs$age_at_initial_pathologic_diagnosis<- as.numeric(notNAs$age_at_initial_pathologic_diagnosis)
+notNAs$number_pack_years_smoked<- as.numeric(notNAs$number_pack_years_smoked)
+dim(notNAs)
+head(notNAs)
+colnames(notNAs)
+apply(notNAs[,-1],2, summary)
+apply(notNAs[,-1],2, class)
+apply(notNAs[,-1],2, mean)
+```
+
+
+# Prepare dsets:
+
+```{r corrplot, echo = TRUE, message=FALSE, warning=FALSE}
+corrplot(cor(notNAs[, -1]), type = "lower", method = "number")
+# Preparing the DataSet
+set.seed(123)
+n <- nrow(notNAs)
+train <- sample(n, trunc(0.70*n))
+training <- notNAs[train, ]
+dim(training)
+apply(trainig[,-1], 1,mean)
+#testing <- notNAs[-train, ]
+#dim(testing)
+#glm_fm1 <-glm(vital_status ~., data = training, family = binomial)
+```
